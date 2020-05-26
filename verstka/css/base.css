@@ -12,10 +12,16 @@ table, th, td {
 {
     background: #1D2674;
     color: white;
+     border: 1px solid white;
 }
 
 .w-10{
     width: 10%;
+
+}
+
+.w-18{
+    width: 18%;
 
 }
 .font-light{

@@ -83,95 +83,605 @@
     <!--Body-->
     <div class="page">
         <h2 class="font-weight-bold"> Круизы </h2>
-        <!--Название круиза-->
-        <h2 class="text-info text-center"> Круиз «Большое Средиземноморье» </h2>
-        <div class="row">
-            <!--изображение маршрута-->
-            <div class="col-md-6">
-                <img src="images/kruis1.png" class="img-thumbnail" alt="Маршрут круиза">
-            </div>
-            <!--Краткая инфомрация-->
-            <div class="col-md-6">
-                <!--Количесвто дней и название водоема в котором плавание-->
-                <p class="mt-5"><b>13 дней</b> - Средиземное Mоре</p>
-                <!--Название судна-->
-                <p class="mt-5">Круизное судно - <b>Regal Princess 5* LUX</b></p>
-                <p class="mt-5">Цена круиза на одного человека в 2-х местной каюте</p>
-            </div>
-            <div class="col-md-6 mt-md-4">
-                <!--Название круиза в кавычки-->
-                <p class="text-center">Стоимость круиза "Большое Средиземноморье"</p>
-                <table>
-                    <tbody>
-                    <tr>
-                        <td class="blue_cell text-center w-10">I1</td>
-                        <td class="p-1 font-light">Внутренняя (BELLA)</td>
-                        <td class="w-25 blue_cell text-right">29 585 р.</td>
-                    </tr>
-                    <tr>
-                        <td class="blue_cell text-center">I2</td>
-                        <td class="p-1 font-light">Внутренняя (FANTASTICA)</td>
-                        <td class="blue_cell text-right">33 105 р.</td>
-                    </tr>
-                    <tr>
-                        <td class="blue_cell text-center">O1</td>
-                        <td class="p-1 font-light">Внешняя с окном (BELLA)</td>
-                        <td class="blue_cell text-right">36 630 р.</td>
-                    </tr>
-                    <tr>
-                        <td class="blue_cell text-center">O2</td>
-                        <td class="p-1 font-light">Внешняя с окном (FANTASTICA)</td>
-                        <td class="blue_cell text-right">40 150 р.</td>
-                    </tr>
-                    <tr>
-                        <td class="blue_cell text-center">B1</td>
-                        <td class="p-1 font-light">Внешняя с балконом (BELLA)</td>
-                        <td class="blue_cell text-right">43 670 р.</td>
-                    </tr>
-                    <tr>
-                        <td class="blue_cell text-center">B2</td>
-                        <td class="p-1 font-light">Внешняя с балконом (FANTASTICA)</td>
-                        <td class="blue_cell text-right">50 715 р.</td>
-                    </tr>
-                    <tr>
-                        <td class="blue_cell text-center">B3</td>
-                        <td class="p-1 font-light">Внешняя с балконом (AUREA) <i> All inclusive</i></td>
-                        <td class="blue_cell text-right">81 355 р.</td>
-                    </tr>
-                    <tr>
-                        <td class="blue_cell text-center">S3</td>
-                        <td class="p-1 font-light">Сьют с балконом (AUREA) <i> All inclusive</i></td>
-                        <td class="blue_cell text-right">88 395 р.</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-6 mt-md-4">
-                <p class="text-center">Даты начала круиза "Большое Средиземноморье"</p>
+        <!-- Обьект Круиза -->
+        <div>
+            <!--Название круиза-->
+            <h2 class="text-info text-center mb-3"> Круиз «Большое Средиземноморье» </h2>
+            <div class="row">
+                <!--изображение маршрута-->
+                <div class="col-md-6">
+                    <img src="images/kruis1.png" class="img-thumbnail" alt="Маршрут круиза">
+                </div>
+                <!--Краткая инфомрация-->
+                <div class="col-md-6">
+                    <!--Количесвто дней и название водоема в котором плавание-->
+                    <p class="mt-5"><b>13 дней</b> - Средиземное Mоре</p>
+                    <!--Название судна-->
+                    <p class="mt-5">Круизное судно - <b>Regal Princess 5* LUX</b></p>
+                    <p class="mt-5">Цена круиза на одного человека в 2-х местной каюте</p>
+                </div>
+                <div class="col-md-6 mt-md-4">
+                    <!--Название круиза в кавычки-->
+                    <p class="text-center">Стоимость круиза "Большое Средиземноморье"</p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="blue_cell text-center w-10">I1</td>
+                            <td class="p-1 font-light">Внутренняя (BELLA)</td>
+                            <td class="w-25 blue_cell text-right">29 585 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">I2</td>
+                            <td class="p-1 font-light">Внутренняя (FANTASTICA)</td>
+                            <td class="blue_cell text-right">33 105 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">O1</td>
+                            <td class="p-1 font-light">Внешняя с окном (BELLA)</td>
+                            <td class="blue_cell text-right">36 630 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">O2</td>
+                            <td class="p-1 font-light">Внешняя с окном (FANTASTICA)</td>
+                            <td class="blue_cell text-right">40 150 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">B1</td>
+                            <td class="p-1 font-light">Внешняя с балконом (BELLA)</td>
+                            <td class="blue_cell text-right">43 670 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">B2</td>
+                            <td class="p-1 font-light">Внешняя с балконом (FANTASTICA)</td>
+                            <td class="blue_cell text-right">50 715 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">B3</td>
+                            <td class="p-1 font-light">Внешняя с балконом (AUREA) <i> All inclusive</i></td>
+                            <td class="blue_cell text-right">81 355 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">S3</td>
+                            <td class="p-1 font-light">Сьют с балконом (AUREA) <i> All inclusive</i></td>
+                            <td class="blue_cell text-right">88 395 р.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 mt-md-4">
+                    <p class="text-center">Даты начала круиза "Большое Средиземноморье"</p>
 
-                <table >
-                    <tbody>
-                    <tr>
-                        <td class="p-2 text-center">1 Июля 2020 г. Ср</td>
-                    </tr>
-                    <tr>
-                        <td  class="p-2 text-center">25 Июля 2020 г. Чт  	русская группа</td>
-                    </tr>
-                    <tr>
-                        <td  class="p-2 text-center">18 Авгута 2020 г. Вт
-русская группа; наш представитель на борту</td>
-                    </tr>
-                    <tr>
-                        <td  class="p-2 text-center">11 Сентября 2020 г.  Пт 	русская группа </td>
-                    </tr>                    <tr>
-                        <td  class="p-2 text-center">5 Октября 2020 г.  Пн</td>
-                    </tr>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 text-center">1 Июля 2020 г. Ср</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">25 Июля 2020 г. Чт русская группа</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">18 Авгута 2020 г. Вт
+                                русская группа; наш представитель на борту
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">11 Сентября 2020 г. Пт русская группа</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">5 Октября 2020 г. Пн</td>
+                        </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <h4 class="text-center mt-4">Маршрут круиза "Большое Средиземноморье" </h4>
+                    <table class="w-75 m-auto ">
+                        <thead>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                День
+                            </td>
+                            <td class="pl-2">
+                                Маршрут круиза
+                            </td>
+                            <td class="w-10 text-center">
+                                Прибытие
+                            </td>
+                            <td class="w-10 text-center">
+                                Отбытие
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                1
+                            </td>
+                            <td class="pl-2">
+                                БАРСЕЛОНА, Испания
+                            </td>
+                            <td class="w-18 text-center">
+                                посадка с 13:00
+                            </td>
+                            <td class="w-18 text-center">
+                                19:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                2
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                3
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                4
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                5
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                6
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                7
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                8
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                9
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                10
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                11
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                12
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                13
+                            </td>
+                            <td class="pl-2">
+                                ВЕНЕЦИЯ, Италия
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                высадка до 11:00
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class=""></div>
         </div>
+           <!-- Обьект Круиза -->
+        <div class="mt-5">
+            <!--Название круиза-->
+            <h2 class="text-info text-center  mb-3"> Круиз «Всё Западное Средиземноморье, из Марселя» </h2>
+            <div class="row">
+                <!--изображение маршрута-->
+                <div class="col-md-6">
+                    <img src="images/kruis2.png" class="img-thumbnail" alt="Маршрут круиза">
+                </div>
+                <!--Краткая инфомрация-->
+                <div class="col-md-6">
+                    <!--Количесвто дней и название водоема в котором плавание-->
+                    <p class="mt-5"><b>11 дней</b> - Средиземное Mоре</p>
+                    <!--Название судна-->
+                    <p class="mt-5">Круизное судно - <b>MSC Orchestra</b></p>
+                    <p class="mt-5">Цена круиза на одного человека в 2-х местной каюте</p>
+                </div>
+                <div class="col-md-6 mt-md-4">
+                    <!--Название круиза в кавычки-->
+                    <p class="text-center">Стоимость круиза "Всё Западное Средиземноморье, из Марселя"</p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="blue_cell text-center w-10">I1</td>
+                            <td class="p-1 font-light">Внутренняя (BELLA)</td>
+                            <td class="w-25 blue_cell text-right">29 585 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">I2</td>
+                            <td class="p-1 font-light">Внутренняя (FANTASTICA)</td>
+                            <td class="blue_cell text-right">33 105 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">O1</td>
+                            <td class="p-1 font-light">Внешняя с окном (BELLA)</td>
+                            <td class="blue_cell text-right">36 630 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">O2</td>
+                            <td class="p-1 font-light">Внешняя с окном (FANTASTICA)</td>
+                            <td class="blue_cell text-right">40 150 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">B1</td>
+                            <td class="p-1 font-light">Внешняя с балконом (BELLA)</td>
+                            <td class="blue_cell text-right">43 670 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">B2</td>
+                            <td class="p-1 font-light">Внешняя с балконом (FANTASTICA)</td>
+                            <td class="blue_cell text-right">50 715 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">B3</td>
+                            <td class="p-1 font-light">Внешняя с балконом (AUREA) <i> All inclusive</i></td>
+                            <td class="blue_cell text-right">81 355 р.</td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell text-center">S3</td>
+                            <td class="p-1 font-light">Сьют с балконом (AUREA) <i> All inclusive</i></td>
+                            <td class="blue_cell text-right">88 395 р.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6 mt-md-4">
+                    <p class="text-center">Даты начала круиза "Всё Западное Средиземноморье, из Марселя"</p>
+
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="p-2 text-center">1 Июля 2020 г. Ср</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">25 Июля 2020 г. Чт русская группа</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">18 Авгута 2020 г. Вт
+                                русская группа; наш представитель на борту
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">11 Сентября 2020 г. Пт русская группа</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 text-center">5 Октября 2020 г. Пн</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <h4 class="text-center mt-4">Маршрут круиза "Всё Западное Средиземноморье, из Марселя" </h4>
+                    <table class="w-75 m-auto ">
+                        <thead>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                День
+                            </td>
+                            <td class="pl-2">
+                                Маршрут круиза
+                            </td>
+                            <td class="w-10 text-center">
+                                Прибытие
+                            </td>
+                            <td class="w-10 text-center">
+                                Отбытие
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                1
+                            </td>
+                            <td class="pl-2">
+                                БАРСЕЛОНА, Испания
+                            </td>
+                            <td class="w-18 text-center">
+                                посадка с 13:00
+                            </td>
+                            <td class="w-18 text-center">
+                                19:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                2
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                3
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                4
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                5
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                6
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                7
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                8
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                9
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                10
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                11
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                12
+                            </td>
+                            <td class="pl-2">
+                                ТУЛОН, Франция
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                18:00
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="blue_cell w-10 text-center">
+                                13
+                            </td>
+                            <td class="pl-2">
+                                ВЕНЕЦИЯ, Италия
+                            </td>
+                            <td class="w-18 text-center">
+                                07:00
+                            </td>
+                            <td class="w-18 text-center">
+                                высадка до 11:00
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -207,7 +717,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>ц
