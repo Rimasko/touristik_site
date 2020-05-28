@@ -55,6 +55,11 @@ table, th, td {
     max-height: 20px;
     margin-right: 10px;
 }
+.flag-BG{
+    max-width: 150px;
+    max-height: 60px;
+    margin-right: 10px;
+}
 .w-10{
     width: 10%;
 
