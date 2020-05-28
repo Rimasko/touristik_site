@@ -9,6 +9,27 @@ table, th, td {
   border: 1px solid black;
 }
 
+.main-input{
+    border: 0px;
+    background: rgba(0,0,0,0);
+}
+
+.baseline-field{
+    align-self: baseline;
+}
+
+.container-left-line{
+    border-left: 2px solid #151C5C;
+    padding-left: 1em;
+    min-height: 50px;
+
+}
+.news_date-text{
+    font-size: x-small;
+}
+.news_title-text{
+    font-size: small;
+}
 .blue_cell
 {
     background: #1D2674;
