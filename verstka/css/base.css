@@ -15,7 +15,46 @@ table, th, td {
     color: white;
      border: 1px solid white;
 }
+.country_cell-top-left{
+   padding: 10px;
+   border-bottom: 1px solid #151C5C;
+   border-right: 1px solid #151C5C;
+}
 
+.country_cell-top-right{
+   padding: 10px;
+   border-bottom: 1px solid #151C5C;
+   border-left: 1px solid #151C5C;
+}
+
+.country_cell-bottom-left{
+   padding: 10px;
+   border-right: 1px solid #151C5C;
+}
+
+.country_cell-bottom-right{
+   padding: 10px;
+   border-left: 1px solid #151C5C;
+}
+
+.country_cell-top{
+   padding: 10px;
+    border-bottom: 1px solid #151C5C;
+   border-right: 1px solid #151C5C;
+   border-left: 1px solid #151C5C;
+}
+
+
+.country_cell-bottom{
+   padding: 10px;
+   border-right: 1px solid #151C5C;
+   border-left: 1px solid #151C5C;
+}
+.flag{
+    max-width: 40px;
+    max-height: 20px;
+    margin-right: 10px;
+}
 .w-10{
     width: 10%;
 
