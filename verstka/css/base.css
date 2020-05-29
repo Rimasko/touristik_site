@@ -30,6 +30,17 @@ table, th, td {
 .news_title-text{
     font-size: small;
 }
+
+.lk-form{
+   margin: 0 auto;
+}
+.lk-input{
+    width: 60% !important;
+    border: 1px solid #151C5C;
+    border-radius: 2px;
+   margin: 0 auto;
+    box-sizing: border-box;
+}
 .blue_cell
 {
     background: #1D2674;
@@ -180,4 +191,11 @@ table, th, td {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+[data-toggle="collapse"] .fa:before {
+  content: "\f139";
+}
+
+[data-toggle="collapse"].collapsed .fa:before {
+  content: "\f13a";
 }
