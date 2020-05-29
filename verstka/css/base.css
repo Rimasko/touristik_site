@@ -4,10 +4,15 @@ body{
 }
 table{
      width: 100%;
+
 }
-.black-border{
-  border: 2px solid black;
+.kruiz-table{
+  border: 1px solid #151C5C;
 }
+.kruiz-table tr{
+  border: 1px solid #151C5C;
+}
+
 
 .main-input{
     border: 0px;
@@ -40,6 +45,7 @@ table{
     border-radius: 2px;
    margin: 0 auto;
     box-sizing: border-box;
+        padding-left: 10px;
 }
 .blue_cell
 {
@@ -99,6 +105,7 @@ table{
 
 .w-18{
     width: 18%;
+     border: 1px solid #151C5C;
 
 }
 .font-light{
@@ -201,6 +208,66 @@ table{
 }
 
 .fly-table{
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
+
+}
+
+.fly-table tbody{
+    border: 0px;
+}
+.fly-table th{
+    text-align: center;
+        background: #1D2674;
+    color: white;
+}
+
+.fly-table td{
+    text-align: left;
+    background: #EDF2FF;
+    color: black;
+    padding-left: 0.5em;
+}
+.fly-table td:last-child {
+    text-align: center;
+    background: #A9ABB9;
+    color: black;
+    padding-left: 0.5em;
+}
+
+.fly-table th:first-child {
+    border-radius: 6px 0 0 0;
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+}
+
+.fly-table th:last-child {
+    background: black;
+    border-radius: 0 6px 0 0;
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+}
+
+.people-span{
+    background: #606488;
+    border-radius: 3px;
+    color: white;
+    padding:1px;
+}
+
+.cost-span{
+    background: #FFFFFF;
+    padding: 0.3em;
+    border-radius: 5px;
+    border: 1.5px solid #E1E4F5;
+}
+
+.review-item{
+    background: #F1F2F7;
+    padding: 0.3em;
+}
+
+.review-item button{
+    border: 0;
+    background: #1D2674;
+    border-radius: 7px;
+    color: white;
 }
