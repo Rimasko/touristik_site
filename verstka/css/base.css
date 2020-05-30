@@ -206,9 +206,8 @@ table{
 [data-toggle="collapse"].collapsed .fa:before {
   content: "\f13a";
 }
-
-.fly-table{
-
+.fly-table tr{
+    border-bottom: 1px solid;
 }
 
 .fly-table tbody{
@@ -270,4 +269,66 @@ table{
     background: #1D2674;
     border-radius: 7px;
     color: white;
+}
+
+.registration-info{
+    margin-top: 3em;
+    background: #1D2674;
+    color: white;
+}
+.registration-info ul{
+    list-style: none;
+    padding: 1em 1em 0 1em;
+}
+.registration-info li{
+    display: flex;
+    justify-items: center;
+    list-style: none;
+    margin: 0em 3em 2em 7em;
+
+}
+.registration-info p{
+    margin: auto 1em;
+    font-size: small;
+}
+
+.registration-info img{
+min-width: 53px;
+}
+
+.registration-form{
+   margin: 0 auto;
+}
+.registration-form button{
+   margin: 1em auto;
+    display: flex;
+    justify-self: center;
+    border: 0;
+background: #151C5C ;
+    color: white;
+    padding: 0.5em 1.2em 0.5em 1.2em;
+    font-size: larger;
+}
+
+
+.registration-input{
+    width: 96% !important;
+    border: 1px solid #151C5C;
+    border-radius: 2px;
+   margin: 0 auto;
+    box-sizing: border-box;
+        padding-left: 10px;
+}
+
+@media screen and (max-width: 950px) {
+    .registration-info{
+    margin-top: 0em;
+}
+.registration-info li{
+    display: flex;
+    justify-items: center;
+    list-style: none;
+    margin: 0em 1em 2em 1em;
+
+}
 }
