@@ -352,8 +352,20 @@ display: contents;
     font-size: medium;
 }
 
-.header-ul a:hover{
-  text-decoration: white;
+
+.header-ul a::after {
+  content: '';
+  display: block;
+  width: 100%;
+  background-color: #ccc;
+  height: 1px;
+  transform: scale(0);
+  transition: all .2s;
+
+}
+
+.header-ul a:hover::after {
+  transform: scale(1);
 }
 
 .rounded-button{
