@@ -1,6 +1,11 @@
+
+html,body{
+     height: 100%;
+}
 body{
     background: #EDF2FF;
     width: 100%;
+font-family: 'Manrope', sans-serif;
 }
 table{
      width: 100%;
@@ -119,6 +124,7 @@ table{
 
 .top_button {
     padding: .5em 0;
+    margin-left: 80px;
 }
 
 .top {
@@ -131,6 +137,7 @@ table{
 .footer{
     background: rgba(181, 197, 255, 0.77);
     padding: .8em 0 0 0;
+
 }
 
 
@@ -351,7 +358,10 @@ display: contents;
     font-weight: bold;
     font-size: medium;
 }
+.header-ul a:hover {
+color: #d99420;
 
+}
 
 .header-ul a::after {
   content: '';
@@ -370,19 +380,24 @@ display: contents;
 
 .rounded-button{
     border: 0;
-    background: #1D2674;
-    color: white;
+    background: rgba(0,0,0,0);
+    color: #151C5C;
+   border: 1px solid #151C5C;
     border-radius: 10px;
     padding: .2em .7em .2em .7em;
     text-align: center;
 }
 
 .rounded-button:hover{
-     background: white;
-    color: #1D2674;
+     background: #151C5C;
+    color: white;
 }
 
 .logo{
-    margin-top: 10px;
-    max-height: 100px;
+    margin-top: 19px;
+    max-width: 200px;
+}
+
+.container-md{
+    min-height: 100%;
 }
