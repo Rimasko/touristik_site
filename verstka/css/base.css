@@ -324,27 +324,36 @@ background: #151C5C ;
 }
 }
 
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .header-ul{
     list-style: none;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    height: 100px;
+}
+
+.header-ul li{
+    margin: auto;
+    height: 100px;
+    padding: 50px 0;
 }
 
 .header-ul a{
-    width: 12em;
-    display: inline-block;
-    margin-right: 5px;
-    border: 2px solid #1D2674;
-    box-sizing: border-box;
-    border-radius: 50px;
-    padding: 0.2em 0.5em;
-    font-size: smaller;
+    width: 10em;
+    height: 100%;
+    text-transform: uppercase;
+display: contents;
+    font-weight: bold;
+    font-size: medium;
 }
 
 .header-ul a:hover{
-  background: #1D2674;
-    color: white;
+  text-decoration: white;
 }
 
 .rounded-button{
@@ -359,4 +368,9 @@ background: #151C5C ;
 .rounded-button:hover{
      background: white;
     color: #1D2674;
+}
+
+.logo{
+    margin-top: 10px;
+    max-height: 100px;
 }
