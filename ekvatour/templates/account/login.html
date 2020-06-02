@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+
+{% block title %}Авторизация{% endblock title %}
+{% block content %}
+    <form method="post" class="login-form">
+        {% csrf_token %}
+  <div class="form-group">
+    <label for="id_login">Email</label>
+    <input type="email"  name="login" class="form-control" id="id_login" aria-describedby="emailHelp" placeholder="Ваш email">
+  </div>
+  <div class="form-group">
+    <label for="id_password">Пароль</label>
+    <input type="password" name="password"  class="form-control" id="id_password" placeholder="Пароль">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="id_remember">
+    <label class="form-check-label" for="id_remember">Запомнить меня</label>
+  </div>
+         {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+        <button class="rounded-bottom" type="submit">Войти</button>
+
+
+
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends '_base.html' %}
+{% load  static %}
+{% block title %}Регистрация{% endblock title %}
+{% block content %}
+
+
+    <h2 class="font-weight-bold">Регистрация</h2>
+    <br>
+    <div class="row">
+        <div class="col-md-6 col-12 registration-info">
+            <ul>
+                <li>
+                    <h4>ЗАРЕГЕСТРИРУЙТЕСЬ И ВЫ СМОЖЕТЕ:</h4>
+                </li>
+                <li>
+                    <img class="img-fluid" src="{% static 'images/registration/clock.svg' %}">
+                    <p>Сохранять личные данные и использовать их при бронировании туров (автоматически)</p>
+                </li>
+                <li class="d-flex">
+                    <img class="img-fluid" src="{% static 'images/registration/Star8.svg' %}">
+                    <p>Оставлять отзывы о посещенных турах</p>
+                </li>
+                <li>
+                    <img class="img-fluid" src="{% static 'images/registration/table.svg' %}">
+                    <p>В любой момент открывать историю бронирований</p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-12">
+            <p>поля, обязательные для заполнения *</p>
+            <form class="registration-form" method="post">
+                {% csrf_token %}
+                <p><input id="id_last_name"  class="registration-input" placeholder="Фамилия" type="text" required name="last_name"> *</p>
+                <p><input id="id_first_name" class="registration-input" placeholder="Имя" type="text" required name="first_name"> *</p>
+                <p><input id="id_patronymic_name"  class="registration-input" placeholder="Отчество" type="text" required name="patronymic_name">
+                    *</p>
+                <p><input id="id_birth_date" class="registration-input" placeholder="Дата рождения" type="date" required name="birth_date">
+                    *</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="inlineRadio1"
+                           name="gender" value="M">
+                    <label class="form-check-label" for="inlineRadio1" >Мужской</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="inlineRadio2"
+                           name="gender" value="F">
+                    <label class="form-check-label" for="inlineRadio2">Женский</label>
+                </div>
+                <p><input class="registration-input" placeholder="Email" type="email" required name="email"> *</p>
+                <p><input  class="registration-input" placeholder="Phone" type="tel" required name="phone"> *</p>
+                <p>Пароль должен содержать не менее 8 символов и содержать заглавные и прописные буквы, цифры</p>
+                <p><input id="id_password1" class="registration-input" placeholder="Пароль" type="password" required name="password1"> *
+                </p>
+                <p><input id="id_password2" class="registration-input" placeholder="Повторите пароль" type="password" required
+                          name="password2"> *</p>
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

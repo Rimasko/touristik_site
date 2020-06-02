@@ -297,7 +297,25 @@ min-width: 53px;
 .registration-form{
    margin: 0 auto;
 }
+
+
 .registration-form button{
+   margin: 1em auto;
+    display: flex;
+    justify-self: center;
+    border: 0;
+background: #151C5C ;
+    color: white;
+    padding: 0.5em 1.2em 0.5em 1.2em;
+    font-size: larger;
+}
+
+.login-form{
+       margin: 0 auto;
+        width: 50%;
+}
+
+.login-form button{
    margin: 1em auto;
     display: flex;
     justify-self: center;
