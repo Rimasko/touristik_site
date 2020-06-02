@@ -1,0 +1,403 @@
+
+html,body{
+     height: 100%;
+}
+body{
+    background: #EDF2FF;
+    width: 100%;
+font-family: 'Manrope', sans-serif;
+}
+table{
+     width: 100%;
+
+}
+.kruiz-table{
+  border: 1px solid #151C5C;
+}
+.kruiz-table tr{
+  border: 1px solid #151C5C;
+}
+
+
+.main-input{
+    border: 0px;
+    background: rgba(0,0,0,0);
+}
+
+.baseline-field{
+    align-self: baseline;
+}
+
+.container-left-line{
+    border-left: 2px solid #151C5C;
+    padding-left: 1em;
+    min-height: 50px;
+
+}
+.news_date-text{
+    font-size: x-small;
+}
+.news_title-text{
+    font-size: small;
+}
+
+.lk-form{
+   margin: 0 auto;
+}
+.lk-input{
+    width: 60% !important;
+    border: 1px solid #151C5C;
+    border-radius: 2px;
+   margin: 0 auto;
+    box-sizing: border-box;
+        padding-left: 10px;
+}
+.blue_cell
+{
+    background: #1D2674;
+    color: white;
+     border: 1px solid white;
+}
+.country_cell-top-left{
+   padding: 10px;
+   border-bottom: 1px solid #151C5C;
+   border-right: 1px solid #151C5C;
+}
+
+.country_cell-top-right{
+   padding: 10px;
+   border-bottom: 1px solid #151C5C;
+   border-left: 1px solid #151C5C;
+}
+
+.country_cell-bottom-left{
+   padding: 10px;
+   border-right: 1px solid #151C5C;
+}
+
+.country_cell-bottom-right{
+   padding: 10px;
+   border-left: 1px solid #151C5C;
+}
+
+.country_cell-top{
+   padding: 10px;
+    border-bottom: 1px solid #151C5C;
+   border-right: 1px solid #151C5C;
+   border-left: 1px solid #151C5C;
+}
+
+
+.country_cell-bottom{
+   padding: 10px;
+   border-right: 1px solid #151C5C;
+   border-left: 1px solid #151C5C;
+}
+.flag{
+    max-width: 40px;
+    max-height: 20px;
+    margin-right: 10px;
+}
+.flag-BG{
+    max-width: 150px;
+    max-height: 60px;
+    margin-right: 10px;
+}
+.w-10{
+    width: 10%;
+
+}
+
+.w-18{
+    width: 18%;
+     border: 1px solid #151C5C;
+
+}
+.font-light{
+    font-weight: lighter;
+    font-size: small;
+}
+.top_text {
+    padding: .8em 0;
+    margin-right: 3px;
+}
+
+.top_button {
+    padding: .5em 0;
+    margin-left: 80px;
+}
+
+.top {
+    background: whitesmoke;
+}
+.page{
+    padding: .8em;
+    margin-bottom: 20px;
+}
+.footer{
+    background: rgba(181, 197, 255, 0.77);
+    padding: .8em 0 0 0;
+
+}
+
+
+.menu_list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: white; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+[data-toggle="collapse"] .fa:before {
+  content: "\f139";
+}
+
+[data-toggle="collapse"].collapsed .fa:before {
+  content: "\f13a";
+}
+.fly-table tr{
+    border-bottom: 1px solid;
+}
+
+.fly-table tbody{
+    border: 0px;
+}
+.fly-table th{
+    text-align: center;
+        background: #1D2674;
+    color: white;
+}
+
+.fly-table td{
+    text-align: left;
+    background: #EDF2FF;
+    color: black;
+    padding-left: 0.5em;
+}
+.fly-table td:last-child {
+    text-align: center;
+    background: #A9ABB9;
+    color: black;
+    padding-left: 0.5em;
+}
+
+.fly-table th:first-child {
+    border-radius: 6px 0 0 0;
+    -moz-border-radius: 6px 0 0 0;
+    -webkit-border-radius: 6px 0 0 0;
+}
+
+.fly-table th:last-child {
+    background: black;
+    border-radius: 0 6px 0 0;
+    -moz-border-radius: 0 6px 0 0;
+    -webkit-border-radius: 0 6px 0 0;
+}
+
+.people-span{
+    background: #606488;
+    border-radius: 3px;
+    color: white;
+    padding:1px;
+}
+
+.cost-span{
+    background: #FFFFFF;
+    padding: 0.3em;
+    border-radius: 5px;
+    border: 1.5px solid #E1E4F5;
+}
+
+.review-item{
+    background: #F1F2F7;
+    padding: 0.3em;
+}
+
+.review-item button{
+    border: 0;
+    background: #1D2674;
+    border-radius: 7px;
+    color: white;
+}
+
+.registration-info{
+    margin-top: 3em;
+    background: #1D2674;
+    color: white;
+}
+.registration-info ul{
+    list-style: none;
+    padding: 1em 1em 0 1em;
+}
+.registration-info li{
+    display: flex;
+    justify-items: center;
+    list-style: none;
+    margin: 0em 3em 2em 7em;
+
+}
+.registration-info p{
+    margin: auto 1em;
+    font-size: small;
+}
+
+.registration-info img{
+min-width: 53px;
+}
+
+.registration-form{
+   margin: 0 auto;
+}
+.registration-form button{
+   margin: 1em auto;
+    display: flex;
+    justify-self: center;
+    border: 0;
+background: #151C5C ;
+    color: white;
+    padding: 0.5em 1.2em 0.5em 1.2em;
+    font-size: larger;
+}
+
+
+.registration-input{
+    width: 96% !important;
+    border: 1px solid #151C5C;
+    border-radius: 2px;
+   margin: 0 auto;
+    box-sizing: border-box;
+        padding-left: 10px;
+}
+
+@media screen and (max-width: 950px) {
+    .registration-info{
+    margin-top: 0em;
+}
+.registration-info li{
+    display: flex;
+    justify-items: center;
+    list-style: none;
+    margin: 0em 1em 2em 1em;
+
+}
+}
+
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.header-ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100px;
+}
+
+.header-ul li{
+    margin: auto;
+    height: 100px;
+    padding: 50px 0;
+}
+
+.header-ul a{
+    width: 10em;
+    height: 100%;
+    text-transform: uppercase;
+display: contents;
+    font-weight: bold;
+    font-size: medium;
+}
+.header-ul a:hover {
+color: #d99420;
+
+}
+
+.header-ul a::after {
+  content: '';
+  display: block;
+  width: 100%;
+  background-color: #ccc;
+  height: 1px;
+  transform: scale(0);
+  transition: all .2s;
+
+}
+
+.header-ul a:hover::after {
+  transform: scale(1);
+}
+
+.rounded-button{
+    border: 0;
+    background: rgba(0,0,0,0);
+    color: #151C5C;
+   border: 1px solid #151C5C;
+    border-radius: 10px;
+    padding: .2em .7em .2em .7em;
+    text-align: center;
+}
+
+.rounded-button:hover{
+     background: #151C5C;
+    color: white;
+}
+
+.logo{
+    margin-top: 19px;
+    max-width: 200px;
+}
+
+.container-md{
+    min-height: 100%;
+}
