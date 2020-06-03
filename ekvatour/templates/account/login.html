@@ -16,24 +16,26 @@
     <input type="checkbox" class="form-check-input" id="id_remember">
     <label class="form-check-label" for="id_remember">Запомнить меня</label>
   </div>
-         {% if form.errors %}
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <div class="alert alert-danger">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
-                    {% for error in form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            <strong>{{ error|escape }}</strong>
-                        </div>
-                    {% endfor %}
-                {% endif %}
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
         <button class="rounded-bottom" type="submit">Войти</button>
 
 
 
         </div>
     </form>
+
+      <a href="{% url 'account_reset_password' %}">Забыли Пароль?</a>
 {% endblock %}

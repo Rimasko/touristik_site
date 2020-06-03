@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load tour_lists %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +10,17 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7ea454c201.js" crossorigin="anonymous"></script>
+  <link href="{% static 'css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 <div id="mySidenav" class="sidenav" style="width: 0px;">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#" class="nav-link">Онлайн бронирование</a></li>
-    <a href="#" class="nav-link">Страны</a>
+    <a href="{% url 'online' %}" class="nav-link">Онлайн бронирование</a></li>
+    <a href="{% url 'country_list' %}" class="nav-link">Страны</a>
     <a href="#" class="nav-link">Горячие предложения</a>
-    <a href="#" class="nav-link">Круизы</a>
-    <a href="#" class="nav-link">О нас</a>
+    <a href="{% url 'kruiz' %}" class="nav-link">Круизы</a>
+    <a href="{% url 'about' %}" class="nav-link">О нас</a>
 </div>
 
 
@@ -60,12 +62,13 @@
         <nav class="navbar-light top-menu">
             <div class="row">
                 <div class="col-1 col-md-2 ">
-                    <img class="logo" src="{% static 'images/logo.png' %}">
+                    <a href="{% url 'home' %}">
+                        <img class="logo" src="{% static 'images/logo.png' %}"></a>
                 </div>
                 <div class="col-md-10  col-sm-8 d-none d-md-block">
                     <ul class="header-ul">
                         <li class="">
-                            <a class=" btn" href="#" class="nav-link"> Онлайн бронирование</a>
+                            <a class=" btn" href="{% url 'online' %}" class="nav-link"> Онлайн бронирование</a>
                         </li>
 
                         <li class="">
@@ -76,10 +79,10 @@
                             <a href="#" class="btn">Горячие предложения</a>
                         </li>
                         <li class="">
-                            <a href="#" class="btn">Круизы</a>
+                            <a href="{% url 'kruiz' %}" class="btn">Круизы</a>
                         </li>
                         <li class="">
-                            <a href="#" class="btn">О компании</a>
+                            <a href="{% url 'about' %}" class="btn">О компании</a>
                         </li>
                     </ul>
                 </div>
@@ -94,55 +97,53 @@
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
                 <div class="row">
-                    <div class="col-2 d-flex country_cell-top-left">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-top">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-top">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-top">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-top">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-top-right">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
+                    {% country_list as country_list %}
+                    {% for country in country_list.all %}
+                        {% if forloop.counter0 == 0 %}
+                            <div class="col-2  country_cell-top-left">
+                                <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                    <img class="flag" src="{{ country.flag.url }}">
+                                    <p>{{ country.name }}</p>
+                                </a>
+                            </div>
+                        {% elif forloop.counter0 < 5 and forloop.counter0 > 0 %}
+                            <div class="col-2 d-flex country_cell-top">
+                                <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                    <img class="flag" src="{{ country.flag.url }}">
+                                    <p>{{ country.name }}</p>
+                                </a>
+                            </div>
+                        {% elif forloop.counter0 == 5 %}
+                            <div class="col-2 d-flex country_cell-top-right">
+                                <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                    <img class="flag" src="{{ country.flag.url }}">
+                                    <p>{{ country.name }}</p>
+                                </a>
+                            </div>
+                        {% elif forloop.counter0 == 11 %}
+                            <div class="col-2 d-flex country_cell-bottom-right">
+                                <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                    <img class="flag" src="{{ country.flag.url }}">
+                                    <p>{{ country.name }}</p>
+                                </a>
+                            </div>
+                        {% elif forloop.counter0 == 6 %}
+                            <div class="col-2 d-flex country_cell-bottom-left">
+                                <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                    <img class="flag" src="{{ country.flag.url }}">
+                                    <p>{{ country.name }}</p>
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="col-2 d-flex country_cell-bottom">
+                                <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                    <img class="flag" src="{{ country.flag.url }}">
+                                    <p>{{ country.name }}</p>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
 
-                    <div class="col-2 d-flex country_cell-bottom-left">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-bottom">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-bottom">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-bottom">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-bottom">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
-                    <div class="col-2 d-flex country_cell-bottom-right">
-                        <img class="flag" src="images/Flag_of_Bulgaria.svg"></img>
-                        <p>Болгария</p>
-                    </div>
 
                 </div>
             </div>
@@ -180,13 +181,15 @@
         </div>
     </div>
 </footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 <script src="{% static 'js/bootstrap.js' %}"></script>
+
+<script src="{% static 'js/datepicker.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
+{% block page_scripts %}
+{% endblock %}
 </body>
 </html>

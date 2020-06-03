@@ -3,13 +3,13 @@
 {% block title %}Log Out{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>Log Out</h1>
-        <p>Are you sure you want to log out?</p>
+    <div class="container login-form">
+        <h1>Выход из аккаунта</h1>
+        <p>Вы Уверены что хотите выйти?</p>
         <form method="post" action="{% url 'account_logout' %}">
             {% csrf_token %}
             {{ form }}
-            <button class="btn btn-danger" type="submit">Log Out</button>
+            <button class="btn btn-danger" type="submit">Выйти</button>
         </form>
     </div>
 {% endblock %}

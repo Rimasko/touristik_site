@@ -1,0 +1,176 @@
+{% extends '_base.html' %}
+{% load static  %}
+{% load tour_lists %}
+{% block title %}Страны{% endblock title %}
+{% block content %}
+    <form class="filter-section" method="get">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="filter-row">
+                    <label for="id_country">Страна</label>
+                    <select id="id_country" class="long-input">
+                        {% country_name_list as country_list %}
+                        {% for country in country_list.all  %}
+                            <option>{{ country.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-row">
+                    <label for="id_tour">Туры</label>
+                    <select id="id_tour" class="long-input">
+                        <option name="tour_type" value="H">Горчий тур</option>
+                        <option name="tour_type" value="O">Обычный тур</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <label for="id_start">Дата вылета</label>
+                    <div class="d-flex">
+                        <input id="id_start" class="datepicker-here data-input" type="text">
+                        <p>—</p>
+                        <input id="id_country" class="datepicker-here data-input" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="filter-row">
+                    <label for="id_start">Продолжительность</label>
+                    <div class="d-flex">
+                        <input id="id_start" class="data-input" type="number" value="1">
+                        <p>—</p>
+                        <input id="id_country" class="data-input" type="number" value="40">
+                        <p>ночей</p>
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="d-flex justify-content-between w-50">
+                        <label for="id_tour mr-5">Взрослых</label>
+                        <input id="id_country" class="data-input" type="number" value="1">
+                    </div>
+                </div>
+                <div class="filter-row">
+                    <div class="d-flex justify-content-between w-50">
+                        <label for="id_tour mr-5">Детей</label>
+                        <input id="id_country" class="data-input" type="number" value="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row pl-5"">
+            <div class="col-6 col-md-3 ">
+                <div class="filter-column">
+                    <p>Город</p>
+                    <div class="filter-overflow" id="id_cities">
+                        <label class="check-div">One
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">One
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">One
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">One
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">One
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">One
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6 col-md-3 ">
+                <div class="filter-column">
+                    <p>Опции</p>
+                    <div class="filter-overflow " id="id_options">
+                        {% all_options_list as options_list %}
+                        {% for option in options_list.all %}
+                             <label class="check-div">{{ option.option }}
+                            <input type="checkbox" value="{{ option.id }}">
+                            <span class="checkmark"></span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="filter-column">
+                    <div>
+                        <p>Категории</p>
+                        <div class="d-flex">
+                            <label class="check-div">SC
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">HV2
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">HV1
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">5*
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">4*
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">3*
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <p>Питание</p>
+                        <div class="d-flex">
+                            <label class="check-div">AI
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">BB
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">FB
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">HB
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="check-div">RO
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+     <hr>
+    <button class="search-button" type="submit">Найти</button>
+    </form>
+
+
+{% endblock %}
+
+{% block page_scripts %}
+    <script src="{% static 'js/tour_search.js' %}"></script>
+{% endblock %}

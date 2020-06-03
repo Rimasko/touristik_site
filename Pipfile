@@ -10,6 +10,8 @@ django = "*"
 pillow = "*"
 psycopg2-binary = "*"
 django-allauth = "*"
+django-ckeditor = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.6"

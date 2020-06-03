@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block title %}Страны{% endblock title %}
+{% block content %}
+
+    {% for country in country_list.all %}
+        <div class="card">
+        <div class="card-header">
+            <a href="{{ country.get_absolute_url }}" class="d-flex justify-content-between">
+                <h3 class="card-title">{{ country.name }}</h3>
+                <img class="flag-BG" src="{{ country.flag.url }}">
+            </a>
+
+        </div>
+        </div>
+    {% endfor %}
+{% endblock %}
