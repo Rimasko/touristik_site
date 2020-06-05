@@ -1,5 +1,5 @@
 {% extends '_base.html' %}
-{% load static  %}
+{% load static %}
 {% load tour_lists %}
 {% block title %}Страны{% endblock title %}
 {% block content %}
@@ -10,7 +10,7 @@
                     <label for="id_country">Страна</label>
                     <select id="id_country" class="long-input">
                         {% country_name_list as country_list %}
-                        {% for country in country_list.all  %}
+                        {% for country in country_list.all %}
                             <option>{{ country.name }}</option>
                         {% endfor %}
                     </select>
@@ -26,9 +26,9 @@
                 <div class="filter-row">
                     <label for="id_start">Дата вылета</label>
                     <div class="d-flex">
-                        <input id="id_start" class="datepicker-here data-input" type="text">
+                        <input id="id_departure_date_start" class="datepicker-here data-input" type="text">
                         <p>—</p>
-                        <input id="id_country" class="datepicker-here data-input" type="text">
+                        <input id="id_departure_date_end" class="datepicker-here data-input" type="text">
                     </div>
                 </div>
             </div>
@@ -36,138 +36,141 @@
                 <div class="filter-row">
                     <label for="id_start">Продолжительность</label>
                     <div class="d-flex">
-                        <input id="id_start" class="data-input" type="number" value="1">
+                        <input id="id_days_min" class="data-input" type="number" value="1">
                         <p>—</p>
-                        <input id="id_country" class="data-input" type="number" value="40">
+                        <input id="id_days_max" class="data-input" type="number" value="40">
                         <p>ночей</p>
                     </div>
                 </div>
                 <div class="filter-row">
                     <div class="d-flex justify-content-between w-50">
-                        <label for="id_tour mr-5">Взрослых</label>
-                        <input id="id_country" class="data-input" type="number" value="1">
+                        <label for="id_number_of_adults mr-5">Взрослых</label>
+                        <input id="id_number_of_adults" class="data-input" type="number" value="1">
                     </div>
                 </div>
                 <div class="filter-row">
                     <div class="d-flex justify-content-between w-50">
-                        <label for="id_tour mr-5">Детей</label>
-                        <input id="id_country" class="data-input" type="number" value="1">
+                        <label for="id_number_of_child mr-5">Детей</label>
+                        <input id="id_number_of_child" class="data-input" type="number" value="1">
                     </div>
                 </div>
             </div>
         </div>
         <hr>
-        <div class="row pl-5"">
-            <div class="col-6 col-md-3 ">
-                <div class="filter-column">
-                    <p>Город</p>
-                    <div class="filter-overflow" id="id_cities">
-                        <label class="check-div">One
-                            <input type="checkbox">
+        <div class="row pl-5"
+        ">
+        <div class="col-6 col-md-3 ">
+            <div class="filter-column">
+                <p>Город</p>
+                <div class="filter-overflow" id="id_cities">
+                    {% for city in cities %}
+                        <label class="check-div">{{ city.name }}
+                            <input type="checkbox" value="{{ city.id }}">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="check-div">One
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="check-div">One
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="check-div">One
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="check-div">One
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="check-div">One
-                            <input type="checkbox">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-6 col-md-3 ">
-                <div class="filter-column">
-                    <p>Опции</p>
-                    <div class="filter-overflow " id="id_options">
-                        {% all_options_list as options_list %}
-                        {% for option in options_list.all %}
-                             <label class="check-div">{{ option.option }}
-                            <input type="checkbox" value="{{ option.id }}">
-                            <span class="checkmark"></span>
-                        </label>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <div class="filter-column">
-                    <div>
-                        <p>Категории</p>
-                        <div class="d-flex">
-                            <label class="check-div">SC
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">HV2
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">HV1
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">5*
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">4*
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">3*
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <p>Питание</p>
-                        <div class="d-flex">
-                            <label class="check-div">AI
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">BB
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">FB
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">HB
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="check-div">RO
-                                <input type="checkbox">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-
-                    </div>
+                    {% endfor %}
 
                 </div>
             </div>
 
         </div>
-     <hr>
-    <button class="search-button" type="submit">Найти</button>
-    </form>
+        <div class="col-6 col-md-3 ">
+            <div class="filter-column">
+                <p>Опции</p>
+                <div class="filter-overflow " id="id_options">
+                    {% all_options_list as options_list %}
+                    {% for option in options_list.all %}
+                        <label class="check-div">{{ option.option }}
+                            <input type="checkbox" value="{{ option.id }}">
+                            <span class="checkmark"></span>
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="filter-column">
+                <div>
+                    <p>Категории</p>
+                    <div class="d-flex" id="id_categories">
+                        <label class="check-div">SC
+                            <input type="checkbox" value="SC">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">HV2
+                            <input type="checkbox" value="HV2">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">HV1
+                            <input type="checkbox" value="HV1">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">5*
+                            <input type="checkbox" value="5">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">4*
+                            <input type="checkbox" value="4">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">3*
+                            <input type="checkbox" value="3">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <p>Питание</p>
+                    <div class="d-flex" id="id_eats">
+                        <label class="check-div">AI
+                            <input type="checkbox" value="AI">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">BB
+                            <input type="checkbox" value="BB">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">FB
+                            <input type="checkbox" value="FB">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">HB
+                            <input type="checkbox" value="HB">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="check-div">RO
+                            <input type="checkbox" value="RO">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
 
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+        <hr>
+        <button class="search-button">Найти</button>
+    </form>
+    <br>
+    <div>
+        <table class="fly-table serach_results">
+            <thead>
+            <tr>
+                <th>Начало</th>
+                <th>Тур</th>
+                <th>Ночей</th>
+                <th>Отель</th>
+                <th>Номер размещения</th>
+                <th>Питание</th>
+                <th>Опции</th>
+                <th>Возвращение</th>
+                <th>Цена</th>
+            </tr>
+            </thead>
+<tbody></tbody>
+        </table>
+<h2 id="no_tours"> По вашему запросу ничего не найдено </h2>
+    </div>
 
 {% endblock %}
 

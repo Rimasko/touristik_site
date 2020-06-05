@@ -61,7 +61,7 @@ class TourTypeModel(models.Model):
 
 class CityModel(models.Model):
     name = models.CharField("Название города", max_length=150)
-    country = models.ForeignKey(CountryModel, on_delete=models.CASCADE, verbose_name="Страна")
+    country = models.ForeignKey(CountryModel, on_delete=models.CASCADE, verbose_name="Страна", related_name='cities')
 
     class Meta:
         verbose_name = "Город"
@@ -105,6 +105,10 @@ class TourModel(models.Model):
     tour_nutrition = models.CharField("Питание", choices=TOUR_NUTRITION_CHOICE, max_length=2)
     tour_options = models.ManyToManyField(TourOptionModel, related_name='tours')
     image = models.ImageField("Изображение тура", upload_to='tour_images/')
+    hotel_name = models.CharField("Название отеля", default="NoName", max_length=200)
+    accommodation_number = models.CharField("Номер размещения", default="NoName", max_length=200)
+    cost = models.PositiveIntegerField("Цена тура", default=0)
+
 
     class Meta:
         verbose_name = "Тур"
