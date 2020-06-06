@@ -2,6 +2,8 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 
 class CountryModel(models.Model):
@@ -109,7 +111,65 @@ class TourModel(models.Model):
     accommodation_number = models.CharField("Номер размещения", default="NoName", max_length=200)
     cost = models.PositiveIntegerField("Цена тура", default=0)
 
-
     class Meta:
         verbose_name = "Тур"
         verbose_name_plural = "Туры"
+
+    def __str__(self):
+        return f"№ {self.pk}, {self.city}, Дата - {self.departure_date}, стоимость - {self.cost} "
+
+    def get_days(self):
+        return (self.arrival_date-self.departure_date).days
+
+
+class Review(models.Model):
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name="Автор")
+    tour = models.ForeignKey(TourModel, on_delete=models.CASCADE, verbose_name="на какой тур")
+    star = models.PositiveSmallIntegerField("Оценка", default=0)
+    text = models.TextField("содержание отзыва", null=False)
+    created_date = models.DateTimeField("Время создания", auto_created=True, auto_now=True)
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"
+
+    def get_absolute_url(self):
+        return reverse('review_detail', kwargs={"pk": self.pk})
+
+
+class ReservedTour(models.Model):
+    user = models.ForeignKey(get_user_model(),
+                             on_delete=models.CASCADE,
+                             verbose_name="Пользователь",
+                             related_name='reserved_tours')
+    tour = models.ForeignKey(TourModel, on_delete=models.CASCADE,
+                             verbose_name="зарезервированный тур")
+    is_active = models.BooleanField("Активный тур", default=True)
+
+    class Meta:
+        verbose_name = "Зарезервированный тур"
+        verbose_name_plural = "Зарезервированные туры"
+
+
+class News(models.Model):
+    title = models.CharField("Заголовок", max_length=200)
+    text = RichTextField("Текст новости", blank=False)
+    created_date = models.DateTimeField("Время создания", auto_now=True)
+    published = models.BooleanField('Опубликовано', default=False)
+    slug = models.SlugField(null=False, unique=True)
+
+    def get_absolute_url(self):
+        return reverse('news_detail', kwargs={"slug": self.slug})
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Новость"
+        verbose_name_plural = "Новости"
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(News, self).save(*args, **kwargs)
+
+

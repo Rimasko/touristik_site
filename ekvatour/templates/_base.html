@@ -76,7 +76,7 @@
                                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Страны</a>
                         </li>
                         <li class="">
-                            <a href="#" class="btn">Горячие предложения</a>
+                            <a href="{% url 'hot_tours' %}" class="btn">Горячие предложения</a>
                         </li>
                         <li class="">
                             <a href="{% url 'kruiz' %}" class="btn">Круизы</a>
@@ -189,7 +189,7 @@
 
 <script src="{% static 'js/datepicker.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-{% block page_scripts %}
-{% endblock %}
+ <script src="{% static 'js/tour_ajax.js' %}"></script>
+
 </body>
 </html>

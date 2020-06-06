@@ -11,7 +11,13 @@ class ProfileView(LoginRequiredMixin, views.View):
 
     def get(self, request, *args, **kwargs):
         user = request.user
-        return render(request, self.template_name)
+        user_tours = user.reserved_tours.all()  
+        user_reviews = user.review_set.all()
+        data = {
+            "user_tours": user_tours,
+            "user_reviews": user_reviews
+        }
+        return render(request, self.template_name, context=data)
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -25,8 +31,3 @@ class ProfileView(LoginRequiredMixin, views.View):
             return render(request, self.template_name)
         else:
             return render(request, self.template_name, {'form': form})
-
-
-
-
-

@@ -151,7 +151,8 @@ $(document).ready(function () {
                         for (var o in fields.tour_options) {
                             options_name_list.push(_options.find(x => x.id == o))
                         }
-                        var markup = `<tr onclick="">
+                        var markup = `
+                        <tr onclick="open_modal_to_buy('${city_name}(Krasnoyarsk)','${fields.cost}',${tour.pk})">
                         <td><p>${fields.departure_date}</p>
                             <p><i class="fas fa-clock"></i> ${fields.departure_time}</p></td>
                         <td>${city_name} (Krasnoyarsk)</td>
@@ -170,10 +171,10 @@ $(document).ready(function () {
                     });
 
                     $(".serach_results").show();
-                      $("#no_tours").hide();
+                    $("#no_tours").hide();
                 } else {
                     $(".serach_results").hide();
-                     $("#no_tours").show();
+                    $("#no_tours").show();
                 }
 
             },
@@ -185,4 +186,72 @@ $(document).ready(function () {
     });
 
     $('.search-button').click();
+
+
+    /* 1. Visualizing things on Hover - See next part for action on click */
+    $('#stars_review li').on('mouseover', function () {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+        // Now highlight all the stars that's not after the current hovered star
+        $(this).parent().children('li.star').each(function (e) {
+            if (e < onStar) {
+                $(this).addClass('hover');
+            } else {
+                $(this).removeClass('hover');
+            }
+        });
+
+    }).on('mouseout', function () {
+        $(this).parent().children('li.star').each(function (e) {
+            $(this).removeClass('hover');
+        });
+    });
+
+
+    /* 2. Action to perform on click */
+    $('#stars_review li').on('click', function () {
+        var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+        var stars = $(this).parent().children('li.star');
+
+        for (i = 0; i < stars.length; i++) {
+            $(stars[i]).removeClass('selected');
+        }
+
+        for (i = 0; i < onStar; i++) {
+            $(stars[i]).addClass('selected');
+        }
+        $("#start_rating").attr("value", onStar)
+
+    });
+
+
 });
+
+
+function responseMessage(msg) {
+    $('.success-box').fadeIn(200);
+    $('.success-box div.text-message').html("<span>" + msg + "</span>");
+}
+
+function open_modal_to_buy(tour_name, tour_cost, id) {
+    $("#bronirovano").hide();
+    $("#modal_tour_name").text(tour_name);
+    $("#modal_tour_cost").text(Intl.NumberFormat('ru-RU').format(tour_cost));
+    $("#tour_id").attr("value", id)
+    $('#TourGetModal').modal('toggle');
+}
+
+function open_review(id) {
+    $("#start_rating").attr("value", 1)
+    $("#reserved_id").attr("value", id)
+    $("#review_text").val("")
+    $('#reviewModal').modal('toggle');
+
+    var stars = $('#stars_review').children('li.star');
+
+    for (i = 0; i < stars.length; i++) {
+        $(stars[i]).removeClass('selected');
+        $(stars[i]).removeClass('hover');
+    }
+
+}

@@ -1,102 +1,82 @@
 {% extends '_base.html' %}
 {% load static %}
+
+{% load tour_lists %}
 {% block title %}Круизы{% endblock title %}
 {% block content %}
 
-<img class="w-100" src="{% static 'images/bg.png' %}">
-<form class="w-100">
-    <div class="form-row ">
-        <div class="col-6 col-md  border border-dark  baseline-field">
-            <label>Куда</label>
-            <input type="text" class="w-100 main-input" class="form-text" placeholder="Страны, курорты и отели">
-        </div>
-        <div class="col-6 col-md border border-dark baseline-field">
-            <label>Откуда</label>
-            <input type="text" class="w-100 main-input" placeholder="Красноярск">
-        </div>
-        <div class="col-6 col-md border border-dark baseline-field">
-            <label>Дата вылета</label>
-            <input type="text" class="datepicker-here w-100 main-input" data-position="right top" placeholder="">
-        </div>
-
-        <div class="col-6 col-md border border-dark baseline-field">
-            <label>Ночи</label>
-            <input type="number" class="w-100 main-input" class="text-center" placeholder="">
-        </div>
-        <div class=" col-6 col-md border border-dark baseline-field">
-            <label>Количество человек</label>
-            <input type="number" class="w-100 main-input" placeholder="">
-        </div>
-        <input type="submit" class="col-6 col-md blue_cell" value="Найти туры">
-    </div>
-</form>
-<br>
-<div class="row">
-    <div class="col-md">
-        <a href="#News" class="text-left"><h3>Новости</h3></a>
-        <div class="container-left-line">
-            <div class="d-flex ">
-                <p class="news_date-text">27.03.2020</p>
-                <a href="#" class="alert-link"><p class="news_title-text pl-2"> РФ. Временная приостановка работы
-                    объектов массового отдыха...</p></a>
+    <img class="w-100" src="{% static 'images/bg.png' %}">
+    <form class="w-100" action="{% url 'online' %}" method="get">
+        <div class="form-row ">
+            <div class="col-6 col-md  border border-dark  baseline-field">
+                <label for="id_country">Куда</label>
+                <select id="id_country" name="country" class="w-100 main-input"
+                        placeholder="Страны, курорты и отели">
+                    {% country_name_list as country_list %}
+                    {% for country in country_list.all %}
+                        <option value="{{ country.id }}">{{ country.name }}</option>
+                    {% endfor %}
+                </select>
             </div>
-        </div>
-        <div class="container-left-line">
-            <div class="d-flex ">
-                <p class="news_date-text">27.03.2020</p>
-                <a href="#" class="alert-link"><p class="news_title-text pl-2"> РФ. Временная приостановка работы
-                    объектов массового отдыха...</p></a>
+            <div class="col-6 col-md border border-dark baseline-field">
+                <label for="id_tour_type">Тур</label>
+                <select id="id_tour_type" name="tour_type" class="w-100 main-input">
+                    <option value="H">Горчий</option>
+                    <option value="O">Обычный</option>
+                </select>
             </div>
-        </div>
-        <div class="container-left-line">
-            <div class="d-flex ">
-                <p class="news_date-text">27.03.2020</p>
-                <a href="#" class="alert-link"><p class="news_title-text pl-2"> РФ. Временная приостановка работы
-                    объектов массового отдыха...</p></a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md">
-        <a href="#News" class="text-left"><h3>Отзывы</h3></a>
-        <div class="container-left-line">
-            <div class="border-bottom">
-                <p class="news_title-text pr-2"><a href="#">Орлова Галина </a>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                </p>
-                <p class="news_date-text">27.03.2020</p>
-                <p class="news_title-text">Летал с мужем в октябре в Тайланд. Всё прекрасно!...</p>
-                <a href="#" class="news_date-text"> Читать отзыв полностью </a>
-            </div>
-            <div class="border-bottom">
-                <p class="news_title-text pr-2"><a href="#">Орлова Галина </a>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                </p>
-                <p class="news_date-text">27.03.2020</p>
-                <p class="news_title-text">Летал с мужем в октябре в Тайланд. Всё прекрасно!...</p>
-                <a href="#" class="news_date-text"> Читать отзыв полностью </a>
-            </div>
-            <div class="border-bottom">
-                <p class="news_title-text pr-2"><a href="#">Орлова Галина </a>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <i class="far fa-star"></i>
-                </p>
-                <p class="news_date-text">27.03.2020</p>
-                <p class="news_title-text">Летал с мужем в октябре в Тайланд. Всё прекрасно!...</p>
-                <a href="#" class="news_date-text"> Читать отзыв полностью </a>
+            <div class="col-6 col-md border border-dark baseline-field">
+                <label for="id_departure_date_start">Дата вылета</label>
+                <input id="id_departure_date_start" name="departure_date_start" type="text"
+                       class="datepicker-here w-100 main-input" data-position="right top" placeholder="">
             </div>
 
+            <div class="col-6 col-md border border-dark baseline-field">
+                <label for="night_count">Ночи</label>
+                <input id="night_count" name="days_min" type="number" class="w-100 main-input" placeholder="">
+            </div>
+            <div class=" col-6 col-md border border-dark baseline-field">
+                <label for="people_count">Количество человек</label>
+                <input id="people_count" name="number_of_adults" type="number" class="w-100 main-input" placeholder="">
+            </div>
+            <input type="submit" class="col-6 col-md blue_cell" value="Найти туры">
+        </div>
+    </form>
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <a href="{% url 'news_list' %}" class="text-left"><h3>Новости</h3></a>
+
+            {% last_news as news_list %}
+            {% for news in news_list %}
+            <div class="container-left-line">
+                <div class="d-flex ">
+                    <p class="news_date-text">{{ news.created_date }}</p>
+                    <a href="{{ news.get_absolute_url}}" class="alert-link"><p class="news_title-text pl-2">{{ news.title }}</p></a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="col-md">
+            <a href="{% url 'review_list' %}" class="text-left"><h3>Отзывы</h3></a>
+            <div class="container-left-line">
+                {% last_reviews as reviews %}
+
+                {% for review in reviews %}
+                    <div class="border-bottom reviews">
+                        <p class="news_title-text pr-2">
+                            <a href="#">{{ review.author.get_full_name }}</a>
+
+                            {% get_raiting_html review.star as rating %}
+                            {{ rating|safe }}
+                        </p>
+                        <p class="news_date-text">{{ review.created_date }}</p>
+                        <p class="news_title-text">{{ review.text|truncatewords:10}}</p>
+                        <a href="{{ review.get_absolute_url }}" class="news_date-text"> Читать отзыв полностью </a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

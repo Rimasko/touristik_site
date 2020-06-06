@@ -1,0 +1,109 @@
+{% extends "_base.html" %}
+{% load tour_lists %}
+{% block title %} Горячие туры {% endblock %}
+{% block content %}
+    <h2>Горячие туры</h2>
+    <div class="row">
+        {% country_list as country_list %}
+        {% for country in country_list.all %}
+            {% if forloop.counter0 == 0 %}
+
+                <div class="col-2  country_cell-top-left">
+                    <a href="?country={{ country.id }}" class="d-flex">
+                        <img class="flag" src="{{ country.flag.url }}">
+                        <p>{{ country.name }}</p>
+                    </a>
+                </div>
+            {% elif forloop.counter0 < 5 and forloop.counter0 > 0 %}
+                <div class="col-2 d-flex country_cell-top">
+                    <a href="?country={{ country.id }}" class="d-flex">
+                        <img class="flag" src="{{ country.flag.url }}">
+                        <p>{{ country.name }}</p>
+                    </a>
+                </div>
+            {% elif forloop.counter0 == 5 %}
+                <div class="col-2 d-flex country_cell-top-right">
+                    <a href="?country={{ country.id }}" class="d-flex">
+                        <img class="flag" src="{{ country.flag.url }}">
+                        <p>{{ country.name }}</p>
+                    </a>
+                </div>
+            {% elif forloop.counter0 == 11 %}
+                <div class="col-2 d-flex country_cell-bottom-right">
+                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                        <img class="flag" src="{{ country.flag.url }}">
+                        <p>{{ country.name }}</p>
+                    </a>
+                </div>
+            {% elif forloop.counter0 == 6 %}
+                <div class="col-2 d-flex country_cell-bottom-left">
+                    <a href="?country={{ country.id }}" class="d-flex">
+                        <img class="flag" src="{{ country.flag.url }}">
+                        <p>{{ country.name }}</p>
+                    </a>
+                </div>
+            {% else %}
+                <div class="col-2 d-flex country_cell-bottom">
+                    <a href="?country={{ country.id }}" class="d-flex">
+                        <img class="flag" src="{{ country.flag.url }}">
+                        <p>{{ country.name }}</p>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div>
+        {% for tour in tour_list.all %}
+            <div class="hot-tour-item row">
+                <div class="col-12 col-md-6">
+                    <img src="{{ tour.image.url }}">
+                    <div class="overlay-bottom-left">
+                        <p>{{ tour.departure_date }} / {{ tour.get_days }} ночей</p>
+                    </div>
+                    <div class="overlay-bottom-right">
+                        {{ tour.cost }} P.
+                    </div>
+                </div>
+                <div class="col-12  col-md-6 left">
+                    <p id="hotel">{{ tour.hotel_name|title }}</p>
+                    <p id="city">{{ tour.city }}</p>
+                    <hr>
+                    <p><i class="fas fa-male"></i> Взрослых: {{ tour.number_of_adults }}</p>
+                    <p><i class="fas fa-bed"></i> {{ tour.accommodation_number }}</p>
+                    <p>Питание: {{ tour.tour_nutrition }}</p>
+                    <form action="{% url 'reserve_tour' %}" method="post">
+                        {% csrf_token %}
+                        <input id="tour_id" name="tour" type="number" hidden value="{{ tour.pk }}">
+                        <button value="55" type="submit" class="">Забронироваить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a class="pagination-action" href="?page=1">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="?page={{ page_obj.previous_page_number }}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <span class="pagination-number pagination-current">{{ num }}</span>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <a class="pagination-action" href="?page={{ page_obj.next_page_number }}">
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </a>
+        <a class="pagination-action" href="?page={{ page_obj.paginator.num_pages }}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -26,6 +26,7 @@ table {
 .main-input {
     border: 0px;
     background: rgba(0, 0, 0, 0);
+    max-height: 24px;
 }
 
 .baseline-field {
@@ -244,14 +245,13 @@ table {
     text-align: left;
     background: #EDF2FF;
     color: black;
-    padding-left: 0.5em;
+    padding: 5px;
 }
 
 .fly-table td:last-child {
     text-align: center;
     background: #A9ABB9;
     color: black;
-    padding-left: 0.5em;
 }
 
 .fly-table th:first-child {
@@ -627,4 +627,177 @@ hr {
 
 .serach_results{
     display: none;
+}
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color: #242da3;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color: #151C5C;
+}
+.review-list #item
+{
+    border-bottom: 1px solid #151C5C;
+    margin-bottom: 20px;
+}
+
+.review-list #author
+{
+    font-weight: bold;
+    font-size: large;
+    color:  #151C5C;
+    margin-right: 10px;
+}
+
+.review-list #date
+{
+    font-size: medium;
+    color: #3e3e3e;
+    margin-right: 10px;
+}
+.reviews{
+      margin-bottom: 10px;
+}
+.reviews p{
+    margin-bottom: 4px;
+    padding: 0;
+}
+
+.hot-tour-item {
+    width: 80%;
+    border: 1px solid #151C5C;
+    margin: 30px auto;
+}
+.hot-tour-item p {
+margin: 0;
+}
+
+.hot-tour-item img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hot-tour-item .col-md-6{
+    padding-left: 0;
+    padding-right: 0;
+}
+.hot-tour-item .left{
+    padding: 20px;
+}
+
+.hot-tour-item .left button{
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+    border: 0;
+    background: #151C5C;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-self: center;
+}
+
+
+.hot-tour-item #hotel{
+    font-weight: bold;
+    font-size: large;
+}
+
+.hot-tour-item .overlay-bottom-left {
+  position: absolute;
+  bottom: 0;
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.8);
+  color: #000000;
+  width: 80%;
+  opacity:1;
+  font-size: 20px;
+  margin: 15px;
+  padding: 5px;
+  text-align: left;
+}
+
+.hot-tour-item .overlay-bottom-right {
+  position: absolute;
+  right: 0;
+    bottom: 0;
+  background: #151C5C;
+  color: white;
+  width: 100px;
+  opacity:1;
+  font-size: 20px;
+  margin: 8px;
+  padding: 5px;
+  text-align: center;
+}
+
+
+.hot-tour-item hr {
+margin: 8px 0;
+    border: 1px solid;
+}
+
+
+/* BLUE THEME */
+
+.pagination {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination-number {
+    padding: 10px 6px;
+    border-radius: 2px;
+    color: #ffffff;
+    background-color: #26469e;
+    text-align: center;
+    margin: 3px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.pagination-number:hover,
+.pagination-current {
+    background-color: #3354AA;
+}
+
+.pagination-action {
+    margin: 0 0.1em;
+    display: inline-block;
+     padding: 10px 15px;
+    color: #B9B9B9;
+    font-weight: bold;
+}
+
+.pagination-action:hover,
+.pagination-previous,
+.pagination-next {
+    color: #b6b6b6;
+    font-weight: bold;
 }

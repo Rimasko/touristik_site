@@ -1,0 +1,20 @@
+{% extends '_base.html' %}
+{% load tour_lists %}
+{% block title %}Отзыв {% endblock title %}
+{% block content %}
+     {% get_raiting_html review.star as rating %}
+    <h2 class="text-center">Отзыв о {{ review.tour.city }}, {{ review.tour.hotel_name }}, {{ review.tour.tour_category }}</h2>
+        <div class="card w-50 m-auto">
+        <div class="card-header d-flex justify-content-between">
+            <div class="card-title"> Пользователь {{ review.author.get_full_name }}</div>
+            <div>   Рейтинг  {{ rating|safe }}</div>
+
+        </div>
+            <div class="card-body">
+
+            <p class="">{{ review.text}}</p>
+
+            </div>
+            <div class="card-footer text-right"> <p >{{ review.created_date }}</p></div>
+        </div>
+{% endblock %}

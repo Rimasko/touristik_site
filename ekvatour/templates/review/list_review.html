@@ -1,19 +1,26 @@
 {% extends '_base.html' %}
-
-{% block title %}Страны{% endblock title %}
+{% load tour_lists %}
+{% block title %} Отзывы {% endblock %}
 {% block content %}
+    <h2>Отзывы</h2>
+    <br>
+    <div class="review-list">
+                {% for review in reviews %}
+                    <div id="item">
+                        <div class="d-flex">
+                            <p id="author">{{ review.author.get_full_name }}</p>
 
-    {% for country in country_list.all %}
-        <div class="card">
-        <div class="card-header">
-            <a href="{{ country.get_absolute_url }}" class="d-flex justify-content-between">
-                <h3 class="card-title">{{ country.name }}</h3>
-                <img class="flag-BG" src="{{ country.flag.url }}">
-            </a>
+                            {% get_raiting_html review.star as rating %}
+                            {{ rating|safe }}
+                        </div>
+                        <p id="date" >{{ review.created_date }}</p>
+                        <div class="text-body"><p class="">{{ review.text|truncatewords:10}}</p></div>
 
-        </div>
-        </div>
-    {% endfor %}
+
+                        <a href="{{ review.get_absolute_url }}" class="nav-link"> Читать отзыв полностью </a>
+                    </div>
+                {% endfor %}
+    </div>
 
 
 <div class="pagination">

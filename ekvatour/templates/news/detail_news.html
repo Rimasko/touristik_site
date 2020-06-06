@@ -1,0 +1,11 @@
+{% extends '_base.html' %}
+{% block title %}Отзыв {% endblock title %}
+{% block content %}
+    <h2 class="text-center">{{ news.title|title }}</h2>
+        <div class="w-70 m-auto">
+            <div class="card-body">
+            <p class="">{{ news.text|safe}}</p>
+            </div>
+            <div class="card-footer text-right"> <p >{{ news.created_date }}</p></div>
+        </div>
+{% endblock %}

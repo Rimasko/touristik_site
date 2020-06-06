@@ -47,5 +47,5 @@ class TourUser(AbstractUser):
     phone = models.CharField('Номер телефона', max_length=12, blank=False)
     birth_date = models.DateField("День рождение", null=True)
 
-
     REQUIRED_FIELDS = ['first_name', 'last_name', 'patronymic_name', 'gender', 'phone', 'birth_date']
+

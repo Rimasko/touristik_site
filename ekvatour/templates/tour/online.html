@@ -11,7 +11,8 @@
                     <select id="id_country" class="long-input">
                         {% country_name_list as country_list %}
                         {% for country in country_list.all %}
-                            <option>{{ country.name }}</option>
+                            <option {% if country.id == country_pk %} selected {% endif %}
+                                                                      value="{{ country.id }}">{{ country.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -19,14 +20,18 @@
                 <div class="filter-row">
                     <label for="id_tour">Туры</label>
                     <select id="id_tour" class="long-input">
-                        <option name="tour_type" value="H">Горчий тур</option>
-                        <option name="tour_type" value="O">Обычный тур</option>
+                        <option {% if tour_type == "H" %} selected {% endif %} name="tour_type" value="H">Горчий тур
+                        </option>
+                        <option {% if tour_type == "O" %} selected {% endif %} name="tour_type" value="O">Обычный тур
+                        </option>
                     </select>
                 </div>
                 <div class="filter-row">
                     <label for="id_start">Дата вылета</label>
                     <div class="d-flex">
-                        <input id="id_departure_date_start" class="datepicker-here data-input" type="text">
+                        <input id="id_departure_date_start" class="datepicker-here data-input" type="text"
+                               value="{% if departure_date_start %} {{ departure_date_start }} {% endif %}"
+                        >
                         <p>—</p>
                         <input id="id_departure_date_end" class="datepicker-here data-input" type="text">
                     </div>
@@ -36,7 +41,8 @@
                 <div class="filter-row">
                     <label for="id_start">Продолжительность</label>
                     <div class="d-flex">
-                        <input id="id_days_min" class="data-input" type="number" value="1">
+                        <input id="id_days_min" class="data-input" type="number"
+                               value="{% if days_min %}{{ days_min }}{% else %}1{% endif %}">
                         <p>—</p>
                         <input id="id_days_max" class="data-input" type="number" value="40">
                         <p>ночей</p>
@@ -45,7 +51,8 @@
                 <div class="filter-row">
                     <div class="d-flex justify-content-between w-50">
                         <label for="id_number_of_adults mr-5">Взрослых</label>
-                        <input id="id_number_of_adults" class="data-input" type="number" value="1">
+                        <input id="id_number_of_adults" class="data-input" type="number"
+                               value="{% if number_of_adults %}{{ number_of_adults }}{% else %}1{% endif %}">
                     </div>
                 </div>
                 <div class="filter-row">
@@ -167,13 +174,40 @@
                 <th>Цена</th>
             </tr>
             </thead>
-<tbody></tbody>
+            <tbody></tbody>
         </table>
-<h2 id="no_tours"> По вашему запросу ничего не найдено </h2>
+        <h2 id="no_tours"> По вашему запросу ничего не найдено </h2>
     </div>
 
-{% endblock %}
+    <!-- Modal -->
+    <div class="modal fade" id="TourGetModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reviewModalLabel">Бронирование тура</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
-{% block page_scripts %}
-    <script src="{% static 'js/tour_search.js' %}"></script>
+                <div class="modal-body">
+                    <div class="d-flex"><h4> Тур: </h4>
+                        <h3 id="modal_tour_name">test</h3></div>
+                    <div class="d-flex">Стоимость: <h4 id="modal_tour_cost">test</h4> p.</div>
+                    <h3 id="#bronirovano" style="display: none; color: green">Забронировано</h3>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                    <form action="{% url 'reserve_tour' %}" method="post">
+                        {% csrf_token %}
+                        <input id="tour_id" name="tour" type="number" hidden value="-1">
+                        <button value="55" type="submit" class="btn btn-primary">Бронировать
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

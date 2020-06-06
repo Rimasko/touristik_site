@@ -1,19 +1,24 @@
 {% extends '_base.html' %}
-
-{% block title %}Страны{% endblock title %}
+{% load tour_lists %}
+{% block title %} Новости {% endblock %}
 {% block content %}
-
-    {% for country in country_list.all %}
-        <div class="card">
-        <div class="card-header">
-            <a href="{{ country.get_absolute_url }}" class="d-flex justify-content-between">
-                <h3 class="card-title">{{ country.name }}</h3>
-                <img class="flag-BG" src="{{ country.flag.url }}">
-            </a>
-
-        </div>
-        </div>
-    {% endfor %}
+    <h2>Новости</h2>
+            {% if request.user.is_stuff or request.user.is_superuser %}
+            <a href="{% url 'news_create' %}" class="rounded-button"> добавить новость</a><br>
+        {% endif %}
+    <br>
+    <div class="review-list">
+                {% for news in news_list %}
+                    <div id="item">
+                        <div class="d-flex">
+                            <p id="author">{{ news.title }}</p>
+                        </div>
+                        <p id="date" >{{ news.created_date }}</p>
+                        <div class="text-body"><p class="">{{ news.text|striptags|safe|truncatewords:20}}</p></div>
+                        <a href="{{ news.get_absolute_url }}" class="nav-link"> Читать новость полностью </a>
+                    </div>
+                {% endfor %}
+    </div>
 
 
 <div class="pagination">

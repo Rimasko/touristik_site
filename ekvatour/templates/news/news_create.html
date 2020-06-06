@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+{% block title %} Создание новости {% endblock %}
+{% block content %}
+    <div class="m-auto w-75">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="title_id">Заголовок</label>
+                <input type="text" class="form-control" id="title_id" aria-describedby="emailHelp"
+                       placeholder="Введите заголовок" name="title" required>
+                <small id="emailHelp" class="form-text text-muted">Постарайтесь написать наиболее лаконичный заголовок</small>
+            </div>
+            <div class="form-group">
+                <label for="title">Содержание</label>
+                {{ form.media }}
+                {{ form.text }}
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="published_id" name="published">
+                <label class="form-check-label" for="published_id">Опубликовано</label>
+            </div>
+            <button type="submit" class="rounded-button">Добавить новость</button>
+        </form>
+    </div>
+{% endblock %}

@@ -4,6 +4,10 @@ from .models import TourUser
 from .forms import TourUserChangeForm, TourUserCreationForm
 
 
+# class TourModelInlineAdmin(admin.TabularInline):
+#     model = TourUser.tours.through
+
+
 class TourUserAdmin(UserAdmin):
     add_form = TourUserCreationForm
     form = TourUserChangeForm
@@ -24,6 +28,7 @@ class TourUserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active')}
          ),
     )
+    # inlines = (TourModelInlineAdmin,)
 
 
 admin.site.register(TourUser, TourUserAdmin)
