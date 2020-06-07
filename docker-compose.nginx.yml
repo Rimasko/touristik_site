@@ -24,6 +24,7 @@ services:
       - 8000:8000
     depends_on:
       - db
+    restart: unless-stopped
   db:
     image: postgres:11
     env_file:
