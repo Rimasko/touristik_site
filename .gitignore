@@ -88,4 +88,4 @@ local_settings.py
 .env
 db.sqlite3
 ### Google cloud auth
-ekva-tour-krsk-f404f6fb1373.json
+ekvatour/ekva-tour-krsk-f404f6fb1373.json
