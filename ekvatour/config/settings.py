@@ -198,7 +198,7 @@ DEFAULT_FROM_EMAIL = 'rimas.amga@gmail.com'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5  # попытки входа
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400  # время до следущих попыток
 
-# Почта с которой пишем
+# Почта для связи с клиентами
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
