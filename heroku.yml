@@ -11,4 +11,4 @@ release:
     - python manage.py makemigrations --noinput
     - python manage.py migrate --noinput
 run:
-  web: gunicorn config.wsgi -c /server/config/gunicorn.py
+  web: gunicorn config.wsgi -c ./config/gunicorn.py
