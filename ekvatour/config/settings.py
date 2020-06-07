@@ -98,16 +98,7 @@ AUTHENTICATION_BACKENDS = [
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'PASSWORD': os.environ.get("POSTGRES_PASSWORD", default='postgres'),
-        'USER': os.environ.get("POSTGRES_USER", default='postgres'),
-        'HOST': 'db',
-        'PORT': 5432
-    }
-}
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -141,7 +132,20 @@ if ENVIRONMENT == 'production':
     import dj_database_url
 
     db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
+    DATABASES = {'default': db_from_env}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'postgres',
+            'PASSWORD': os.environ.get("POSTGRES_PASSWORD", default='postgres'),
+            'USER': os.environ.get("POSTGRES_USER", default='postgres'),
+            'HOST': 'db',
+            'PORT': 5432
+        }
+    }
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
