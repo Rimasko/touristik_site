@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="paowdpaowmdpaowmamwd")
 DEBUG = int(os.environ.get("DEBUG", default=0))
 ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 
-ALLOWED_HOSTS = ['*.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['ekva-tour.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 # Application definition
 
