@@ -37,13 +37,14 @@ class TourSearchView(View):
         days_min = request.GET.get('days_min', None)
         number_of_adults = request.GET.get('number_of_adults', None)
         departure_date_start = request.GET.get("departure_date_start", None)
-
-        first_country = get_object_or_404(CountryModel,
-                                          pk=country_name) \
-            if country_name is not None else CountryModel.objects.first()
-        cities = first_country.cities.all()
+        if country_name is not None:
+            first_country = get_object_or_404(CountryModel,
+                                              pk=country_name)
+        else:
+            first_country = CountryModel.objects.first()
+        cities = first_country.cities.all() if first_country is not None else None
         context = {
-            "country_pk": first_country.pk,
+            "country_pk": first_country.pk if first_country is not None else None,
             "cities": cities,
             "tour_type": tour_type,
             "days_min": days_min,

@@ -12,6 +12,10 @@ psycopg2-binary = "*"
 django-allauth = "*"
 django-ckeditor = "*"
 django-filter = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-storages = {extras = ["google"],version = "*"}
+google-cloud-storage = "==1.28.0"
 
 [requires]
 python_version = "3.7"

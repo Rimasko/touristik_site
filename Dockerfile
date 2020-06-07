@@ -10,4 +10,3 @@ COPY Pipfile /server/
 RUN pip install pipenv && pipenv lock && pipenv install --system
 COPY ./ekvatour /server/
 
-

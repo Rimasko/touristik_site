@@ -19,10 +19,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", default=0)
+SECRET_KEY = os.environ.get("SECRET_KEY", default="paowdpaowmdpaowmamwd")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", default=0)
+DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = ['*']
 
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'ckeditor',
     'django_filters',
-    
+
     # Свои Пакеты
     'users.apps.UsersConfig',
     'tour.apps.TourConfig',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -177,7 +179,6 @@ DEFAULT_FROM_EMAIL = 'rimas.amga@gmail.com'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5  # попытки входа
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400  # время до следущих попыток
 
-
 # Почта с которой пишем
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_USE_TLS = True
@@ -237,7 +238,7 @@ CKEDITOR_CONFIGS = {
         # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
+            'uploadimage',  # the upload image feature
             # your extra plugins here
             'div',
             'autolink',
@@ -254,3 +255,14 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
+
+# whitenoise
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# django-starage
+
+DEFAULT_FILE_STORAGE = 'gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'ekvatour_buckets'
+GS_PROJECT_ID = "ekva-tour-krsk"
+GS_AUTO_CREATE_BUCKET = True
