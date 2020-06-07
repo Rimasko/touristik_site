@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "ekva-tour-krsk",
+  "private_key_id": "f404f6fb137396908e0a90ca940f24a2dc166a40",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC1K85ObvuvBurr\nJ5rEUBnj2NCUiZ2T8OODqHB4yk6kRzac79wuM0iNO2aLWJmZ5LNCQSborzH03JXJ\nVcU93CrwxbZp4C10GegEUXHZ95gkX48kVfkXGZB78eMgosp0AphyIw0syST8dctw\naIvY93VZBFgOVk6kMHWg0A6kg2R/lY5++eM0A3XSQWTsxmJZC4xOtqyFrKKLL56f\nO0PN1vlDjSJqBSrZIpH+MpoEaZGOpEFIknJeD4fb86BgwMaNG2SQAPBaV92jBFLp\nWRxlND86Qg/AVSGcOQFC5XLmBTATxyZ5dJIP9pLk5AicjyBOOmoHF1QKBIkWKzZi\n+oG7IFRVAgMBAAECggEAJZ3gWrG5iVhm24egH2XAUmo4uLawJMEOBE6rd7ENzhdJ\nNCGrdl5IkKaGPqWZUvZE8BtGAGcr+Lr6UNEBwLvfoJl0rBwTY/ljDs54VLkPenHq\n7zD4pL62nL2XGrYiUh8d1wkHGcbz6oVsxby3WMfcsixwOh3ae0Xijo7Uk30Cl2i0\nXpIo80YFRw3f8N4FBk5zZdmoFatz5gEyy6jvCCpYBwcY/bG8ug09RBCEPqLI0Yza\nvRAK33NPXuz0qGkblrAvtvdw9P/pq1ar80A+yKhh1l60S7Zlo4pTwDngZlvIhLTc\ncUfVvsvSaL3XcW01PAh/Fg7BMjTwbyR4eGmVErL7KwKBgQD3gS01E65K8Te5UQ9n\nXjrg49lAwIRId1JlOzMhDGG2hp9+05/LH/cSMmJIDHTkw1DisNNQbDqRgYV3ByHg\ncXeMES04XJ1VvW6w6vnooQ/hQzgrGPpM3BpTvCS0FDLSGEO+tZZp2DO3TM/5TlDu\nLvZMRyXiEkiG0EW0q65MVaRnOwKBgQC7Y8HCPSLcM3b5kL9YSW+NYGdeoeasght/\n3hPrKTSddRtRJvO00bZaZjensBbGUUDVRvBW8QKUAzAFJYzgOSl/BGXB3BfZrqmY\n9vvqRkAusTQUHInPb9qprZccCMy8IhK4nKpV9aQc/MVjnJs24wDRvl2nV2MpPjG+\nsQ9lNGsZrwKBgQDsJgI+PDL2KkUiuebal5vR61PkZktQ4RhqohtckvXAM56GYeB6\n7FrOr+f6GniFtJ2+TTyx5THUlyICuXlnLpwDtnfQ6PztS7sLbodXoCUIpxw2crSP\nFQrBjifu8b6zmpc4pQWIo9JkOBPPKRwqxgAWM2Q/2XX9u0Zm5c994dDk9QKBgQCS\n3Whqd8fulVdV2aBd7ZBEWZ4qiPFlmsM6wC8US8M09SdnvwOaYBJvX1WXU2dGH0CU\n53hOa639m1Hzdq6mvaZMKoImIf1/WmkJvelKf6yl67RJXuSTc7MI8UhRbIQpnvrV\nPdQycschAOsjWwY7SkbGHFECancJR/ls3xCV3TNjeQKBgFia+M2nY7u2arS0Ybek\nG4HJ/BpZ8l86s+3YJT6veH5055BqGf67ziHP89bUiL/5YTmqGZQvUc8z8+ddWdbN\noKQ4dJK4xW9kH3vYiS4FFzn8Uiarm28ZqeWUDCFZwAOpkGxtXao3tWPkYS9uaafQ\nUEwNt8nYVk5wH44J+ZbEAGGS\n-----END PRIVATE KEY-----\n",
+  "client_email": "ekvamediafiles@ekva-tour-krsk.iam.gserviceaccount.com",
+  "client_id": "115928100723012471860",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ekvamediafiles%40ekva-tour-krsk.iam.gserviceaccount.com"
+}
