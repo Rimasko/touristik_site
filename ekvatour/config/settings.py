@@ -23,8 +23,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="paowdpaowmdpaowmamwd")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = int(os.environ.get("DEBUG", default=0))
+ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -125,6 +126,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+if ENVIRONMENT == 'production':
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    import dj_database_url
+
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -266,3 +283,5 @@ DEFAULT_FILE_STORAGE = 'gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'ekvatour_buckets'
 GS_PROJECT_ID = "ekva-tour-krsk"
 GS_AUTO_CREATE_BUCKET = True
+
+
