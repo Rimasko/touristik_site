@@ -7,7 +7,7 @@ services:
     env_file:
       - .env
     environment:
-      - DEBUG=0
+      - DEBUG=1
     volumes:
       - ./ekvatour:/server
     ports:

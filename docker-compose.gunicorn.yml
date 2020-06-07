@@ -6,6 +6,8 @@ services:
     command: bash -c "python manage.py makemigrations --noinput && python manage.py migrate --noinput && gunicorn config.wsgi -c config/gunicorn.py"
     env_file:
       - .env
+    environment:
+      - DEBUG=1
     volumes:
       - ./ekvatour:/server
     ports:

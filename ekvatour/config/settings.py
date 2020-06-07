@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
@@ -48,7 +47,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
     'allauth.socialaccount.providers.google',
     'ckeditor',
-    'django_filters',
 
     # Свои Пакеты
     'users.apps.UsersConfig',
@@ -57,7 +55,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,19 +127,17 @@ if ENVIRONMENT == 'production':
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES = {'default': db_from_env}
 
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'postgres',
-            'PASSWORD': os.environ.get("POSTGRES_PASSWORD", default='postgres'),
-            'USER': os.environ.get("POSTGRES_USER", default='postgres'),
-            'HOST': 'db',
-            'PORT': 5432
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD", default='postgres'),
+        'USER': os.environ.get("POSTGRES_USER", default='postgres'),
+        'HOST': 'db',
+        'PORT': 5432
     }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -275,13 +270,3 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-# whitenoise
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# django-starage
-
-DEFAULT_FILE_STORAGE = 'gcloud.GoogleCloudStorage'
-GS_BUCKET_NAME = 'ekvatour_buckets'
-GS_PROJECT_ID = "ekva-tour-krsk"
-GS_AUTO_CREATE_BUCKET = True

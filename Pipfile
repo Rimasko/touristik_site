@@ -11,11 +11,7 @@ pillow = "*"
 psycopg2-binary = "*"
 django-allauth = "*"
 django-ckeditor = "*"
-django-filter = "*"
 gunicorn = "*"
-whitenoise = "*"
-django-storages = {extras = ["google"],version = "*"}
-google-cloud-storage = "==1.28.0"
 dj-database-url = "==0.5.0"
 
 [requires]

@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./nginx/Dockerfile
+    depends_on:
+      - server
+    ports:
+      - 80:80
+    volumes:
+      - ./ekvatour/mediafiles:/nginx/media
+      - ./ekvatour/staticfiles:/nginx/static
+
+  server:
+    build: .
+    command: gunicorn config.wsgi -c config/gunicorn.py
+    env_file:
+      - .env
+    volumes:
+      - ./ekvatour:/server
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:11
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+
