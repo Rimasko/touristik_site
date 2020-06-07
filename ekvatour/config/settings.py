@@ -199,11 +199,11 @@ ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5  # попытки входа
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400  # время до следущих попыток
 
 # Почта с которой пишем
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'login'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = os.environ.get("EMAIL_LOGIN", default='nopass')
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD", default='nopass')
 EMAIL_PORT = 587
 
 # CKEditor
@@ -285,5 +285,3 @@ DEFAULT_FILE_STORAGE = 'gcloud.GoogleCloudStorage'
 GS_BUCKET_NAME = 'ekvatour_buckets'
 GS_PROJECT_ID = "ekva-tour-krsk"
 GS_AUTO_CREATE_BUCKET = True
-
-
