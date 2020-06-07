@@ -7,6 +7,7 @@ RUN mkdir /server
 WORKDIR /server
 
 COPY Pipfile /server/
+RUN apt-get update && apt-get install -y curl
 RUN pip install pipenv && pipenv lock && pipenv install --system
 COPY ./ekvatour /server/
 
