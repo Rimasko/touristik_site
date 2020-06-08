@@ -1,6 +1,5 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
@@ -157,7 +156,7 @@ class News(models.Model):
     text = RichTextField("Текст новости", blank=False)
     created_date = models.DateTimeField("Время создания", auto_now=True)
     published = models.BooleanField('Опубликовано', default=False)
-    slug = models.SlugField(null=False, unique=True)
+    slug = models.SlugField(null=False, unique=True, max_length=200)
 
     def get_absolute_url(self):
         return reverse('news_detail', kwargs={"slug": self.slug})
