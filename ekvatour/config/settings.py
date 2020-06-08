@@ -215,7 +215,7 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # Обязательно провер�
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True  # Почта уникальная для всех
-DEFAULT_FROM_EMAIL = 'rimas.amga@gmail.com'
+DEFAULT_FROM_EMAIL = 'ekvatourKRSK'
 
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5  # попытки входа
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400  # время до следущих попыток
@@ -236,7 +236,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_USER = os.environ.get("EMAIL_LOGIN", default='nopass')
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD", default='nopass')
 EMAIL_PORT = 587
 
