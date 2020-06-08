@@ -40,7 +40,7 @@ class ReviewModelAdmin(admin.ModelAdmin):
 class ReservedTourAdmin(admin.ModelAdmin):
     list_display = ('tour', 'user', 'is_active')
     list_editable = ('is_active',)
-    list_filter = ('tour', 'user', 'is_active')
+    list_filter = ('is_active', )
     search_fields = ('tour',)
     list_display_links = ('user', 'tour')
     raw_id_fields = ('user',)
