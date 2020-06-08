@@ -6,13 +6,21 @@ services:
       context: ./
       dockerfile: ./nginx/Dockerfile
     depends_on:
-      - server
+      - web
     ports:
       - 80:80
     volumes:
       - ./ekvatour/mediafiles:/nginx/media
       - ./ekvatour/staticfiles:/nginx/static
-  server:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+
+  web:
     build: .
     command: gunicorn config.wsgi -c config/gunicorn.py
     env_file:
