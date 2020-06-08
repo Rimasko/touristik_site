@@ -27,6 +27,7 @@ class ProfileView(LoginRequiredMixin, views.View):
             user.first_name = form.cleaned_data['first_name']
             user.patronymic_name = form.cleaned_data['patronymic_name']
             user.phone = form.cleaned_data['phone']
+            user.save()
 
             return render(request, self.template_name)
         else:
