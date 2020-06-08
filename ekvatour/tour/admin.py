@@ -34,6 +34,7 @@ class TourModelAdmin(admin.ModelAdmin):
 @admin.register(Review)
 class ReviewModelAdmin(admin.ModelAdmin):
     list_display = ('tour', 'author', 'star')
+    raw_id_fields = ('author', 'tour')
 
 
 @admin.register(ReservedTour)
