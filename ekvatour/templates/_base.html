@@ -8,25 +8,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-{% cache 50000 head_link %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/7ea454c201.js" crossorigin="anonymous"></script>
-  <link href="{% static 'css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
-{% endcache %}
+    {% cache 50000 head_link %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/7ea454c201.js" crossorigin="anonymous"></script>
+        <link href="{% static 'css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
+    {% endcache %}
 </head>
 <body>
 {% cache 50000 mySidenav %}
-<div id="mySidenav" class="sidenav" style="width: 0px;">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="{% url 'online' %}" class="nav-link">Онлайн бронирование</a></li>
-    <a href="{% url 'country_list' %}" class="nav-link">Страны</a>
-    <a href="#" class="nav-link">Горячие предложения</a>
-    <a href="{% url 'kruiz' %}" class="nav-link">Круизы</a>
-    <a href="{% url 'about' %}" class="nav-link">О нас</a>
-</div>
+    <div id="mySidenav" class="sidenav" style="width: 0px;">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'online' %}" class="nav-link">Онлайн бронирование</a></li>
+        <a href="{% url 'country_list' %}" class="nav-link">Страны</a>
+        <a href="#" class="nav-link">Горячие предложения</a>
+        <a href="{% url 'kruiz' %}" class="nav-link">Круизы</a>
+        <a href="{% url 'about' %}" class="nav-link">О нас</a>
+    </div>
 {% endcache %}
 
 
@@ -104,52 +104,52 @@
             <div class="card card-body">
                 <div class="row">
                     {% cache 500 country_list_nav %}
-                    {% country_list as country_list %}
-                    {% for country in country_list.all %}
-                        {% if forloop.counter0 == 0 %}
-                            <div class="col-2  country_cell-top-left">
-                                <a href="{{ country.get_absolute_url }}" class="d-flex">
-                                    <img class="flag" src="{{ country.flag.url }}">
-                                    <p>{{ country.name }}</p>
-                                </a>
-                            </div>
-                        {% elif forloop.counter0 < 5 and forloop.counter0 > 0 %}
-                            <div class="col-2 d-flex country_cell-top">
-                                <a href="{{ country.get_absolute_url }}" class="d-flex">
-                                    <img class="flag" src="{{ country.flag.url }}">
-                                    <p>{{ country.name }}</p>
-                                </a>
-                            </div>
-                        {% elif forloop.counter0 == 5 %}
-                            <div class="col-2 d-flex country_cell-top-right">
-                                <a href="{{ country.get_absolute_url }}" class="d-flex">
-                                    <img class="flag" src="{{ country.flag.url }}">
-                                    <p>{{ country.name }}</p>
-                                </a>
-                            </div>
-                        {% elif forloop.counter0 == 11 %}
-                            <div class="col-2 d-flex country_cell-bottom-right">
-                                <a href="{{ country.get_absolute_url }}" class="d-flex">
-                                    <img class="flag" src="{{ country.flag.url }}">
-                                    <p>{{ country.name }}</p>
-                                </a>
-                            </div>
-                        {% elif forloop.counter0 == 6 %}
-                            <div class="col-2 d-flex country_cell-bottom-left">
-                                <a href="{{ country.get_absolute_url }}" class="d-flex">
-                                    <img class="flag" src="{{ country.flag.url }}">
-                                    <p>{{ country.name }}</p>
-                                </a>
-                            </div>
-                        {% else %}
-                            <div class="col-2 d-flex country_cell-bottom">
-                                <a href="{{ country.get_absolute_url }}" class="d-flex">
-                                    <img class="flag" src="{{ country.flag.url }}">
-                                    <p>{{ country.name }}</p>
-                                </a>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                        {% country_list as country_list %}
+                        {% for country in country_list.all %}
+                            {% if forloop.counter0 == 0 %}
+                                <div class="col-2  country_cell-top-left">
+                                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                        <img class="flag" src="{{ country.flag.url }}">
+                                        <p>{{ country.name }}</p>
+                                    </a>
+                                </div>
+                            {% elif forloop.counter0 < 5 and forloop.counter0 > 0 %}
+                                <div class="col-2 d-flex country_cell-top">
+                                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                        <img class="flag" src="{{ country.flag.url }}">
+                                        <p>{{ country.name }}</p>
+                                    </a>
+                                </div>
+                            {% elif forloop.counter0 == 5 %}
+                                <div class="col-2 d-flex country_cell-top-right">
+                                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                        <img class="flag" src="{{ country.flag.url }}">
+                                        <p>{{ country.name }}</p>
+                                    </a>
+                                </div>
+                            {% elif forloop.counter0 == 11 %}
+                                <div class="col-2 d-flex country_cell-bottom-right">
+                                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                        <img class="flag" src="{{ country.flag.url }}">
+                                        <p>{{ country.name }}</p>
+                                    </a>
+                                </div>
+                            {% elif forloop.counter0 == 6 %}
+                                <div class="col-2 d-flex country_cell-bottom-left">
+                                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                        <img class="flag" src="{{ country.flag.url }}">
+                                        <p>{{ country.name }}</p>
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="col-2 d-flex country_cell-bottom">
+                                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                                        <img class="flag" src="{{ country.flag.url }}">
+                                        <p>{{ country.name }}</p>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
 
                     {% endcache %}
                 </div>
@@ -165,38 +165,40 @@
     </div>
 </div>
 
-{% cache 5000 site_footer %}
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-5 col-md-5 ">
-                <p>
-                    <a href="https://2gis.ru/krasnoyarsk/search/%20%D0%B3.%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%8F%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%9C%D0%B0%D1%80%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2033?m=92.876998%2C56.014487%2F15.82">
-                        <i class="fas fa-street-view"></i>
-                        г. Красноярск, ул. Марковского 33
+{% cache 50 site_footer %}
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-5 col-md-5 ">
+                    <p>
+                        <a href="https://2gis.ru/krasnoyarsk/search/%20%D0%B3.%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D1%8F%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%9C%D0%B0%D1%80%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%2033?m=92.876998%2C56.014487%2F15.82">
+                            <i class="fas fa-street-view"></i>
+                            г. Красноярск, ул. Марковского 33
+                        </a>
+                    </p>
+                    <p>
+                        <a href="mailto:kras3003@mail.ru"> <i class="fas fa-envelope-square"></i> kras3003@mail.ru</a>
+                    </p>
+                </div>
+                <div class="col-5 col-md-5  text-right">
+                    <p><i class="fas fa-phone-volume font-light"></i><a href="tel:83912941846"> 8 391 294 18 46</a></p>
+                </div>
+                <div class="col-md-2 col-12 dalign-self-center">
+                    <a href="{% url 'feedback' %}">
+                        <button class="rounded-button"> Обратная связь </button>
                     </a>
-                </p>
-                <p>
-                    <a href="mailto:kras3003@mail.ru"> <i class="fas fa-envelope-square"></i> kras3003@mail.ru</a>
-                </p>
-            </div>
-            <div class="col-5 col-md-5  text-right">
-                <p><i class="fas fa-phone-volume font-light"></i><a href="tel:83912941846"> 8 391 294 18 46</a></p>
-            </div>
-            <div class="col-md-2 col-12 dalign-self-center">
-                <button class="rounded-button"> Обратная связь</button>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/datepicker.min.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
- <script src="{% static 'js/tour_ajax.js' %}"></script>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/datepicker.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/tour_ajax.js' %}"></script>
 {% endcache %}
 </body>
 </html>

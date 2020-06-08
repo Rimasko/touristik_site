@@ -1,19 +1,10 @@
 from django.urls import path
 from django.views.decorators.cache import cache_page
 from django.views.generic import TemplateView
-from .views import (CountryDetailView,
-                    CountryListView,
-                    TourSearchView,
-                    get_updated_country,
-                    filter_tours,
-                    CreateResevedTour,
-                    CreateReview,
-                    ReviewDetailView,
-                    ReviewListView,
-                    NewsDetailView,
-                    NewsListView,
-                    NewsCreateView,
-                    HotTourView)
+from .views import (CountryDetailView, CountryListView, TourSearchView,
+                    get_updated_country, filter_tours, CreateResevedTour,
+                    CreateReview, ReviewDetailView, ReviewListView, NewsDetailView,
+                    NewsListView, NewsCreateView, HotTourView, FeedbackCreateView)
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html"), name='home'),
@@ -21,6 +12,7 @@ urlpatterns = [
     path('about/', TemplateView.as_view(template_name="about.html"), name='about'),
     path('online/', TourSearchView.as_view(), name='online'),
     path('hot/', HotTourView.as_view(), name='hot_tours'),
+    path('feedback/', FeedbackCreateView.as_view(), name='feedback'),
     path('online/city_by_country/', get_updated_country, name='online_get_city'),
     path('online/filtertours/', filter_tours, name='online_filter_tours'),
     path('reserve_tour/', CreateResevedTour.as_view(), name='reserve_tour'),

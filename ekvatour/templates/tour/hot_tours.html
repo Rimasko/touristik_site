@@ -52,6 +52,9 @@
             {% endif %}
         {% endfor %}
     </div>
+    {% if country_selected %}
+       Выбрана стана: {{ country_selected.name }}
+    {% endif %}
     <div>
         {% for tour in tour_list.all %}
             <div class="hot-tour-item row">
@@ -84,9 +87,9 @@
 
 <div class="pagination">
     {% if page_obj.has_previous %}
-        <a class="pagination-action" href="?page=1">
+        <a class="pagination-action" href="?{% url_replace page=1 %}">
             <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
-        <a class="pagination-action" href="?page={{ page_obj.previous_page_number }}">
+        <a class="pagination-action" href="?{% url_replace page=page_obj.previous_page_number %}">
             <i class="fa fa-angle-left" aria-hidden="true"></i>
         </a>
     {% endif %}
@@ -94,14 +97,14 @@
         {% if page_obj.number == num %}
             <span class="pagination-number pagination-current">{{ num }}</span>
         {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-            <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+            <a class="pagination-number" href="?{% url_replace page=num %}">{{ num }}</a>
         {% endif %}
     {% endfor %}
     {% if page_obj.has_next %}
-        <a class="pagination-action" href="?page={{ page_obj.next_page_number }}">
+        <a class="pagination-action" href="?{% url_replace page=page_obj.next_page_number %}">
             <i class="fa fa-angle-right" aria-hidden="true"></i>
         </a>
-        <a class="pagination-action" href="?page={{ page_obj.paginator.num_pages }}">
+        <a class="pagination-action" href="?{% url_replace page=page_obj.paginator.num_pages %}">
             <i class="fa fa-angle-double-right" aria-hidden="true"></i>
         </a>
     {% endif %}

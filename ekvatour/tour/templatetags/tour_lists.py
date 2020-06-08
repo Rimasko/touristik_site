@@ -40,3 +40,10 @@ def get_raiting_html(count):
         for _ in range(5 - count):
             stars += ' <i class="far fa-star"></i>'
     return stars
+
+
+@register.simple_tag(takes_context=True)
+def url_replace(context, **kwargs):
+    query = context['request'].GET.copy()
+    query.update(kwargs)
+    return query.urlencode()

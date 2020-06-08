@@ -9,8 +9,8 @@
     <form class="w-100" action="{% url 'online' %}" method="get">
         <div class="form-row ">
             <div class="col-6 col-md  border border-dark  baseline-field">
-                <label for="id_country">Куда</label>
-                <select id="id_country" name="country" class="w-100 main-input"
+                <label for="id_country_main">Куда</label>
+                <select id="id_country_main" name="country" class="w-100 main-input"
                         placeholder="Страны, курорты и отели">
                     {% country_name_list as country_list %}
                     {% for country in country_list.all %}

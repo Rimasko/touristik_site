@@ -173,3 +173,13 @@ class News(models.Model):
         super(News, self).save(*args, **kwargs)
 
 
+class Feedback(models.Model):
+    email = models.EmailField('эл Почта', null=True)
+    phone = models.CharField('телефон', max_length=20, null=True)
+    text = models.TextField('текст обратной связт')
+    viewed = models.BooleanField("Просмотрено", default=False)
+    answered = models.BooleanField("ответили", default=False)
+
+    class Meta:
+        verbose_name = "Обратная связь"
+        verbose_name_plural = "Обратная связь"

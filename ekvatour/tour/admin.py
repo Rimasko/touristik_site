@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import (CountryModel, ImageModel, CityModel, TourOptionModel, TourModel, Review, ReservedTour, News)
+from .models import (CountryModel, ImageModel, CityModel,
+                     TourOptionModel, TourModel, Review, ReservedTour, News, Feedback)
 
 
 class ImageModelInline(admin.TabularInline):
@@ -40,7 +41,7 @@ class ReservedTourAdmin(admin.ModelAdmin):
     list_display = ('tour', 'user', 'is_active')
     list_editable = ('is_active',)
     list_filter = ('tour', 'user', 'is_active')
-    search_fields = ('tour', )
+    search_fields = ('tour',)
     list_display_links = ('user', 'tour')
     raw_id_fields = ('user',)
 
@@ -48,6 +49,13 @@ class ReservedTourAdmin(admin.ModelAdmin):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'published')
-    list_editable = ('published', )
+    list_editable = ('published',)
     prepopulated_fields = {'slug': ('title',)}
 
+
+@admin.register(Feedback)
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('email', 'phone', 'viewed', 'answered')
+    list_editable = ('viewed', 'answered')
+    search_fields = ('email', 'phone', 'text')
+    list_filter = ('viewed', 'answered')

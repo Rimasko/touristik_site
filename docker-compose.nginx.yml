@@ -21,7 +21,8 @@ services:
       - ./ekvatour:/server
     depends_on:
       - db
-    restart: unless-stopped
+      - redis
+      - celery
   celery:
     build: .
     command: celery -A config worker -l info
@@ -35,7 +36,7 @@ services:
   db:
     image: postgres:11
     volumes:
-    - pgdata:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
@@ -43,3 +44,6 @@ services:
   redis:
     image: redis:alpine
 
+volumes:
+  db-data:
+    driver: local

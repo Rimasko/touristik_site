@@ -12,8 +12,8 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import generic, View
-from .models import CountryModel, TourModel, CityModel, ReservedTour, ImageModel, TourOptionModel, Review, News
-from .forms import NewsCreateForm
+from .models import CountryModel, TourModel, CityModel, ReservedTour, Review, News, Feedback
+from .forms import NewsCreateForm, FeedbackCreateForm
 
 
 class CountryListView(generic.ListView):
@@ -26,6 +26,15 @@ class CountryDetailView(generic.DetailView):
     model = CountryModel
     template_name = 'tour/country_detail.html'
     context_object_name = "country"
+
+
+class FeedbackCreateView(generic.CreateView):
+    model = Feedback
+    form_class = FeedbackCreateForm
+    template_name = 'tour/feedback.html'
+
+    def get_success_url(self):
+        return reverse('home')
 
 
 class TourSearchView(View):
@@ -58,6 +67,12 @@ class HotTourView(generic.ListView):
     template_name = "tour/hot_tours.html"
     context_object_name = "tour_list"
     paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super(HotTourView, self).get_context_data(**kwargs)
+        if self.request.method == "GET" and 'country' in self.request.GET:
+            context['country_selected'] = get_object_or_404(CountryModel, pk=self.request.GET.get('country'))
+            return context
 
     def get_queryset(self):
         if self.request.method == "GET":
@@ -197,43 +212,3 @@ class CreateResevedTour(LoginRequiredMixin, generic.View):
             return redirect('lk')
 
         return HttpResponse(status=403)
-
-
-def init_():
-    from django.core.files import File
-    import json
-    from pprint import pprint
-    with open('test_data.json', 'r') as file:
-        data = json.load(file)
-        flag = File(open('flag.png', 'rb'))
-        bg = File(open("bg.png", 'rb'))
-
-        for i in data:
-            country = CountryModel(name=i["name"], about=i["about"], slug=i["slug"])
-            country.save()
-            country.flag.save('flag.png', flag)
-            image = ImageModel(country=country)
-            image.image.save('bg.png', bg)
-
-            for c in i["cities"]:
-                city = CityModel(name=c["name"], country=country)
-                city.save()
-                for t in list(c["tours"]):
-                    tour = TourModel(city=city, tour_type=t["tour_type"], tour_nutrition=t["tour_nutrition"],
-                                     tour_category=t["tour_category"], number_of_child=t["number_of_child"],
-                                     number_of_adults=t["number_of_adults"], hotel_name=t["hotel_name"],
-                                     accommodation_number=t["accommodation_number"], cost=t["cost"])
-
-                    departure_date = datetime.strptime(t["departure_date"].split('+')[0], "%a %b %d %Y %H:%M:%S %Z")
-                    arrival_date = datetime.strptime(t["arrival_date"].split('+')[0], "%a %b %d %Y %H:%M:%S %Z")
-                    departure_time = datetime.strptime(t["departure_time"].split('+')[0], "%a %b %d %Y %H:%M:%S %Z")
-
-                    tour.departure_time = departure_time.time()
-                    tour.departure_date = departure_date
-                    tour.arrival_date = arrival_date
-                    tour.image.save('img.png', bg)
-                    tour.save()
-                    for o in t["tour_options"]:
-                        op, _ = TourOptionModel.objects.get_or_create(option=o["option"])
-                        op.save()
-                        tour.tour_options.add(op)
