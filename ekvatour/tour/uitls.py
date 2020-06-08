@@ -1,6 +1,8 @@
 import tempfile
 from datetime import datetime
+
 import requests
+
 from .models import CountryModel, ImageModel, CityModel, TourModel, TourOptionModel
 
 

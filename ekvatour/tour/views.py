@@ -200,6 +200,9 @@ class NewsCreateView(PermissionRequiredMixin, generic.CreateView):
     model = News
     template_name = 'news/news_create.html'
 
+    def get_success_url(self):
+        return reverse('news_list')
+
 
 class CreateResevedTour(LoginRequiredMixin, generic.View):
 

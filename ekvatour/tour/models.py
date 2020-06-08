@@ -3,7 +3,8 @@ from ckeditor.fields import RichTextField
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.contrib.auth import get_user_model
-from django.utils import timezone
+
+from .text_utils import unique_slug_generator
 
 
 class CountryModel(models.Model):
@@ -25,7 +26,7 @@ class CountryModel(models.Model):
 
     def save(self, *args, **kwargs):  # new
         if not self.slug:
-            self.slug = slugify(self.name)
+            self.slug = unique_slug_generator(self)
         return super().save(*args, **kwargs)
 
 
@@ -119,7 +120,7 @@ class TourModel(models.Model):
         return f"№ {self.pk}, {self.city}, Дата - {self.departure_date}, стоимость - {self.cost} "
 
     def get_days(self):
-        return (self.arrival_date-self.departure_date).days
+        return (self.arrival_date - self.departure_date).days
 
 
 class Review(models.Model):
@@ -169,7 +170,7 @@ class News(models.Model):
         verbose_name_plural = "Новости"
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = unique_slug_generator(self)
         super(News, self).save(*args, **kwargs)
 
 
