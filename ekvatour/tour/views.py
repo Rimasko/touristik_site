@@ -72,7 +72,7 @@ class HotTourView(generic.ListView):
         context = super(HotTourView, self).get_context_data(**kwargs)
         if self.request.method == "GET" and 'country' in self.request.GET:
             context['country_selected'] = get_object_or_404(CountryModel, pk=self.request.GET.get('country'))
-            return context
+        return context
 
     def get_queryset(self):
         if self.request.method == "GET":
