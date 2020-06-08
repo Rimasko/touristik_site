@@ -15,7 +15,7 @@ class TourUserAdmin(UserAdmin):
     list_display = ['email', 'first_name']
     fieldsets = (
         (None, {
-            'fields': ('email', 'password'),
+            'fields': ('email', 'password', 'username'),
         }),
         ('Profile', {
             'fields': ('first_name', 'last_name', 'patronymic_name', 'gender', 'phone', 'birth_date')
