@@ -31,17 +31,6 @@ services:
     depends_on:
       - db
       - redis
-      - celery
-  celery:
-    build: .
-    command: celery -A config worker -l info
-    env_file:
-      - .env
-    volumes:
-      - ./ekvatour:/server
-    depends_on:
-      - db
-      - redis
   db:
     image: postgres:11
     volumes:

@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
     'allauth.socialaccount.providers.google',
     'ckeditor',
-    'djcelery_email',
 
     # Свои Пакеты
     'users.apps.UsersConfig',
@@ -182,15 +181,6 @@ CACHES = {
     }
 }
 
-##################################################################
-# Celery settings
-##################################################################
-
-CELERY_BROKER_URL = os.environ.get("REDIS_LOCATION")
-CELERY_RESULT_BACKEND = os.environ.get("REDIS_LOCATION")
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
 
 ##################################################################
 # django-allauth config
@@ -220,20 +210,12 @@ DEFAULT_FROM_EMAIL = 'ekvatourKRSK'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5  # попытки входа
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400  # время до следущих попыток
 
-##################################################################
-# асинхронная почта
-#################################################################
 
-CELERY_EMAIL_TASK_CONFIG = {
-    'queue': 'email',
-    'rate_limit': '50/m',
-}
 ##################################################################
 # Почта для связи с клиентами
 ##################################################################
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = os.environ.get("EMAIL_LOGIN", default='nopass')
