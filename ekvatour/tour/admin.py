@@ -43,7 +43,7 @@ class ReservedTourAdmin(admin.ModelAdmin):
     list_filter = ('is_active', )
     search_fields = ('tour',)
     list_display_links = ('user', 'tour')
-    raw_id_fields = ('user',)
+    raw_id_fields = ('user', 'tour')
 
 
 @admin.register(News)
