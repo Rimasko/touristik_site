@@ -1,8 +1,10 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load cache %}
 {% block title %}Круизы{% endblock title %}
 {% block content %}
 
+    {% cache 50000 kruiz_template %}
         <h2 class="font-weight-bold"> Круизы </h2>
         <!-- Обьект Круиза -->
         <div>
@@ -600,4 +602,5 @@
                 </div>
             </div>
         </div>
+    {% endcache %}
 {% endblock %}

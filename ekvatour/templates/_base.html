@@ -2,19 +2,23 @@
 <html lang="en">
 {% load static %}
 {% load tour_lists %}
+{% load cache %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+{% cache 50000 head_link %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7ea454c201.js" crossorigin="anonymous"></script>
   <link href="{% static 'css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
+{% endcache %}
 </head>
 <body>
-
+{% cache 50000 mySidenav %}
 <div id="mySidenav" class="sidenav" style="width: 0px;">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <a href="{% url 'online' %}" class="nav-link">Онлайн бронирование</a></li>
@@ -23,6 +27,7 @@
     <a href="{% url 'kruiz' %}" class="nav-link">Круизы</a>
     <a href="{% url 'about' %}" class="nav-link">О нас</a>
 </div>
+{% endcache %}
 
 
 <div class="d-block top">
@@ -98,6 +103,7 @@
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
                 <div class="row">
+                    {% cache 500 country_list_nav %}
                     {% country_list as country_list %}
                     {% for country in country_list.all %}
                         {% if forloop.counter0 == 0 %}
@@ -145,7 +151,7 @@
                         {% endif %}
                     {% endfor %}
 
-
+                    {% endcache %}
                 </div>
             </div>
         </div>
@@ -159,6 +165,7 @@
     </div>
 </div>
 
+{% cache 5000 site_footer %}
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -186,11 +193,10 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-<script src="{% static 'js/bootstrap.js' %}"></script>
-
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/datepicker.min.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
  <script src="{% static 'js/tour_ajax.js' %}"></script>
-
+{% endcache %}
 </body>
 </html>

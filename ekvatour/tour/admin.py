@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils.text import slugify
 
 from .models import (CountryModel, ImageModel, CityModel, TourOptionModel, TourModel, Review, ReservedTour, News)
 

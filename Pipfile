@@ -13,6 +13,11 @@ django-allauth = "*"
 django-ckeditor = "*"
 gunicorn = "*"
 dj-database-url = "==0.5.0"
+redis = "*"
+django-redis = "*"
+celery = "*"
+django-celery-email = "*"
+future = "*"
 
 [requires]
 python_version = "3.7"

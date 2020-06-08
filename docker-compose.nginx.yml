@@ -12,7 +12,6 @@ services:
     volumes:
       - ./ekvatour/mediafiles:/nginx/media
       - ./ekvatour/staticfiles:/nginx/static
-
   server:
     build: .
     command: gunicorn config.wsgi -c config/gunicorn.py
@@ -20,15 +19,27 @@ services:
       - .env
     volumes:
       - ./ekvatour:/server
-    ports:
-      - 8000:8000
     depends_on:
       - db
     restart: unless-stopped
+  celery:
+    build: .
+    command: celery -A config worker -l info
+    env_file:
+      - .env
+    volumes:
+      - ./ekvatour:/server
+    depends_on:
+      - db
+      - redis
   db:
     image: postgres:11
+    volumes:
+    - pgdata:/var/lib/postgresql/data
     env_file:
       - .env
     ports:
       - 5432:5432
+  redis:
+    image: redis:alpine
 

@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from allauth.account.forms import  SignupForm
+from allauth.account.forms import SignupForm
 from .models import TourUser
 
 
@@ -21,8 +21,7 @@ class TourUserChangeForm(UserChangeForm):
 class ProfileChangeForm(forms.ModelForm):
     class Meta:
         model = TourUser
-        fields = ('first_name', 'last_name', 'patronymic_name',  'phone')
-
+        fields = ('first_name', 'last_name', 'patronymic_name', 'phone')
 
 
 class RegistrationForm(SignupForm):
@@ -39,7 +38,6 @@ class RegistrationForm(SignupForm):
     birth_date = forms.DateField()
 
     def save(self, request):
-
         user = super(RegistrationForm, self).save(request)
         data = self.cleaned_data
         user.first_name = data['first_name']

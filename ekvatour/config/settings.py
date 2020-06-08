@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.yandex',
     'allauth.socialaccount.providers.google',
     'ckeditor',
+    'djcelery_email',
 
     # Свои Пакеты
     'users.apps.UsersConfig',
@@ -114,7 +116,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 if ENVIRONMENT == 'production':
     SECURE_BROWSER_XSS_FILTER = True
     X_FRAME_OPTIONS = 'DENY'
@@ -126,12 +127,11 @@ if ENVIRONMENT == 'production':
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    db_from_env = dj_database_url.config(conn_max_age=500)
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
+        'NAME': os.environ.get("POSTGRES_DB", default='postgres'),
         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", default='postgres'),
         'USER': os.environ.get("POSTGRES_USER", default='postgres'),
         'HOST': 'db',
@@ -167,9 +167,36 @@ STATICFILES_FINDERS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
-SITE_ID = 1
+##################################################################
+# Cache settings
+##################################################################
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': os.environ.get("REDIS_LOCATION"),
+        'TIMEOUT': 300000,  # время хранения страницы в секудах
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+##################################################################
+# Celery settings
+##################################################################
+
+CELERY_BROKER_URL = os.environ.get("REDIS_LOCATION")
+CELERY_RESULT_BACKEND = os.environ.get("REDIS_LOCATION")
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+##################################################################
 # django-allauth config
+##################################################################
+
+SITE_ID = 1
 
 LOGIN_REDIRECT_URL = 'home'
 
@@ -193,15 +220,29 @@ DEFAULT_FROM_EMAIL = 'rimas.amga@gmail.com'
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5  # попытки входа
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400  # время до следущих попыток
 
+##################################################################
+# асинхронная почта
+#################################################################
+
+CELERY_EMAIL_TASK_CONFIG = {
+    'queue': 'email',
+    'rate_limit': '50/m',
+}
+##################################################################
 # Почта для связи с клиентами
+##################################################################
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ.get("EMAIL_LOGIN", default='nopass')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD", default='nopass')
 EMAIL_PORT = 587
 
+##################################################################
 # CKEditor
+##################################################################
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -269,4 +310,3 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
-

@@ -1,7 +1,9 @@
 {% extends '_base.html' %}
-
+{% load cache %}
 {% block title %}О компании{% endblock title %}
 {% block content %}
+
+    {% cache 50000 about_template %}
         <h2 class="font-weight-bold"> О компании</h2>
         <p class="text-body">Вы правильно сделали, что зашли на эту страничку. Вам нужна информация как экономично,
             качественно и комфортно отдохнуть на курортах Таиланда, Турции, Египта, Вьетнама, Китая, Индии, Испании,
@@ -41,6 +43,7 @@
             </li>
         </ul>
     </div>
+    {% endcache %}
 </div>
 </div>
 
