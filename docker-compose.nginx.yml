@@ -9,6 +9,7 @@ services:
       - web
     ports:
       - 80:80
+      - "443:443"
     volumes:
       - ./ekvatour/mediafiles:/nginx/media
       - ./ekvatour/staticfiles:/nginx/static
