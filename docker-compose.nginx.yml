@@ -7,12 +7,20 @@ services:
       dockerfile: ./nginx/Dockerfile
     depends_on:
       - web
+      - certbot
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./ekvatour/mediafiles:/nginx/media
       - ./ekvatour/staticfiles:/nginx/static
-
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
   web:
     build: .
     command: gunicorn config.wsgi -c config/gunicorn.py
