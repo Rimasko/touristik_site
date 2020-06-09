@@ -2,9 +2,7 @@ version: '3'
 
 services:
   nginx:
-    build:
-      context: ./
-      dockerfile: ./nginx/Dockerfile
+    image: nginx:1.15-alpine
     depends_on:
       - web
     ports:
@@ -15,11 +13,16 @@ services:
       - ./ekvatour/staticfiles:/nginx/static
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
+      - ./data/nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      nginx_net:
   certbot:
     image: certbot/certbot
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
+    networks:
+      nginx_net:
   web:
     build: .
     command: gunicorn config.wsgi -c config/gunicorn.py
@@ -44,3 +47,7 @@ services:
 volumes:
   db-data:
     driver: local
+
+networks:
+  nginx_net:
+    name: nginx_net
