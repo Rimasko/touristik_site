@@ -781,7 +781,7 @@ margin: 8px 0;
 }
 
 .pagination-number {
-    padding: 10px 6px;
+    padding: 10px 15px;
     border-radius: 2px;
     color: #ffffff;
     background-color: #26469e;
@@ -793,13 +793,14 @@ margin: 8px 0;
 
 .pagination-number:hover,
 .pagination-current {
-    background-color: #3354AA;
+    background-color: #151C5C;
+    color: white;
 }
 
 .pagination-action {
     margin: 0 0.1em;
     display: inline-block;
-     padding: 10px 15px;
+     padding: 15px 15px;
     color: #B9B9B9;
     font-weight: bold;
 }
@@ -807,6 +808,7 @@ margin: 8px 0;
 .pagination-action:hover,
 .pagination-previous,
 .pagination-next {
-    color: #b6b6b6;
+    color: #151C5C;
     font-weight: bold;
+
 }

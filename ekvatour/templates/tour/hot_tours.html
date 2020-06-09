@@ -30,7 +30,7 @@
                 </div>
             {% elif forloop.counter0 == 11 %}
                 <div class="col-2 d-flex country_cell-bottom-right">
-                    <a href="{{ country.get_absolute_url }}" class="d-flex">
+                    <a href="?country={{ country.id }}" class="d-flex">
                         <img class="flag" src="{{ country.flag.url }}">
                         <p>{{ country.name }}</p>
                     </a>
