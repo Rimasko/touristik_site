@@ -7,7 +7,6 @@ services:
       dockerfile: ./nginx/Dockerfile
     depends_on:
       - web
-      - certbot
     ports:
       - 80:80
       - 443:443
