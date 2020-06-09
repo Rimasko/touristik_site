@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="paowdpaowmdpaowmamwd")
 DEBUG = int(os.environ.get("DEBUG", default=0))
 ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 
-ALLOWED_HOSTS = ['161.35.197.158', 'localhost', '127.0.0.1', '0.0.0.0', "ekva-tour24.digital"]
+ALLOWED_HOSTS = ['161.35.197.158', 'localhost', "www.ekva-tour24.digital", '0.0.0.0', "ekva-tour24.digital"]
 
 # Application definition
 
@@ -226,7 +226,7 @@ EMAIL_PORT = 587
 # CKEditor
 ##################################################################
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+# X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 CKEDITOR_CONFIGS = {
     'default': {
