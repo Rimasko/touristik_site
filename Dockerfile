@@ -1,4 +1,4 @@
-FROM python:3.7-slim AS server
+FROM python:3.7-slim AS web
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
