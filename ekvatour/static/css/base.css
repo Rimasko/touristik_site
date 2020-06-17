@@ -705,7 +705,14 @@ hr {
 .reviews {
     margin-bottom: 10px;
 }
-
+.black_borer{
+    border: 1px;
+}
+.form-row
+{
+    margin-right: 0px;
+    margin-left: 0px;
+}
 .reviews p {
     margin-bottom: 4px;
     padding: 0;
