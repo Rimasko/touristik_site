@@ -66,7 +66,7 @@ class TourSearchView(View):
 class HotTourView(generic.ListView):
     template_name = "tour/hot_tours.html"
     context_object_name = "tour_list"
-    paginate_by = 10
+    paginate_by = 12
 
     def get_context_data(self, **kwargs):
         context = super(HotTourView, self).get_context_data(**kwargs)
