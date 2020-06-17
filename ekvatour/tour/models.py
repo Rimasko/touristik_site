@@ -67,7 +67,7 @@ class CityModel(models.Model):
 
     class Meta:
         verbose_name = "Город"
-        verbose_name = "Города"
+        verbose_name_plural = "Города"
 
     def __str__(self):
         return self.name

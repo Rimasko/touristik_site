@@ -10,6 +10,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html"), name='home'),
     path('kruiz/', TemplateView.as_view(template_name="kruizi.html"), name='kruiz'),
     path('about/', TemplateView.as_view(template_name="about.html"), name='about'),
+    path('privatepolicy/', TemplateView.as_view(template_name="private_policy.html"), name='pp'),
     path('online/', TourSearchView.as_view(), name='online'),
     path('hot/', HotTourView.as_view(), name='hot_tours'),
     path('feedback/', FeedbackCreateView.as_view(), name='feedback'),

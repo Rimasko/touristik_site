@@ -18,6 +18,14 @@
     {% endcache %}
 </head>
 <body>
+<div class="alert alert-info" role="alert">
+    Мы используем cookies, чтобы сайт работал лучше. Оставаясь на сайте, вы соглашаетесь с <a href="{% url 'pp' %}">Политикой
+    конфиденциальности.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</a>
+</div>
 {% cache 50000 mySidenav %}
     <div id="mySidenav" class="sidenav" style="width: 0px;">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -160,8 +168,8 @@
     <!-- End Header-->
 
     <div class="page">
-    {% block super_content %}
-    {% endblock %}
+        {% block super_content %}
+        {% endblock %}
         {% block content %}
         {% endblock content %}
     </div>
@@ -187,7 +195,7 @@
                 </div>
                 <div class="col-md-2 col-12 dalign-self-center">
                     <a href="{% url 'feedback' %}">
-                        <button class="rounded-button"> Обратная связь </button>
+                        <button class="rounded-button"> Обратная связь</button>
                     </a>
                 </div>
             </div>

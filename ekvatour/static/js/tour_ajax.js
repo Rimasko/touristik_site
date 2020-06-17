@@ -75,10 +75,7 @@ $(document).ready(function () {
             method: 'GET',
             data: data,
             success: function (data_list) {
-
                 console.log(data_list);
-
-
                 data_list = JSON.parse(data_list);
                 _cities = data_list
                 $("#id_cities label").remove();
