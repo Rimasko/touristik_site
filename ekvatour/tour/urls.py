@@ -24,5 +24,5 @@ urlpatterns = [
     path('country/', CountryListView.as_view(), name='country_list'),
     path('news/', NewsListView.as_view(), name='news_list'),
     path('news/<slug:slug>/', NewsDetailView.as_view(), name='news_detail'),
-    path('news_create/', NewsCreateView.as_view(), name='news_create')
+    path('news_create/', NewsCreateView.as_view(), name='news_create'),
 ]

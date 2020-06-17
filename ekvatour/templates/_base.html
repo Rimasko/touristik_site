@@ -18,13 +18,13 @@
     {% endcache %}
 </head>
 <body>
-<div class="alert alert-info" role="alert">
+<div id="alertPrivacy" class="alert alert-info" role="alertPrivacy">
     Мы используем cookies, чтобы сайт работал лучше. Оставаясь на сайте, вы соглашаетесь с <a href="{% url 'pp' %}">Политикой
-    конфиденциальности.
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    конфиденциальности.</a>
+    <button id="Private_policy_banner" type="button" class="close" data-dismiss="alertPrivacy" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-</a>
+
 </div>
 {% cache 50000 mySidenav %}
     <div id="mySidenav" class="sidenav" style="width: 0px;">

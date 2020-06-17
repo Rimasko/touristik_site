@@ -1,5 +1,14 @@
 $(document).ready(function () {
-    console.log("ready")
+    if (!localStorage.getItem('private_policy_accepted')) {
+        $("#alertPrivacy").alert()
+    } else {
+        $("#alertPrivacy").alert('close')
+    }
+
+    $('#Private_policy_banner').on('click', function () {
+        $("#alertPrivacy").alert('close')
+        localStorage.setItem("private_policy_accepted", "true")
+    });
     let _cities = []
     let _options = []
 
