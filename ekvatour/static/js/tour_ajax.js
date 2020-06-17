@@ -1,11 +1,13 @@
 $(document).ready(function () {
     if (!localStorage.getItem('private_policy_accepted')) {
         $("#alertPrivacy").alert()
+        $("#alertPrivacy").show()
     } else {
         $("#alertPrivacy").alert('close')
     }
 
     $('#Private_policy_banner').on('click', function () {
+
         $("#alertPrivacy").alert('close')
         localStorage.setItem("private_policy_accepted", "true")
     });
