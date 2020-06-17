@@ -3,11 +3,11 @@
 {% block title %}{{ country.name }}{% endblock title %}
 {% block content %}
 
-    <div class="d-flex align-items-baseline">
+    <div class="d-flex">
         <!-- флаг страны -->
         <img class="flag-BG" src="{{ country.flag.url }}"/>
         <!-- Название страны -->
-        <h2>{{ country.name }}</h2>
+        <h2 class="flag-text">{{ country.name }}</h2>
     </div>
     <br>
     <div id="carouselExampleIndicators" class="carousel slide carousel-country" data-ride="carousel">

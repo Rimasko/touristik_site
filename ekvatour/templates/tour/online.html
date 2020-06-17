@@ -41,24 +41,24 @@
                 <div class="filter-row">
                     <label for="id_start">Продолжительность</label>
                     <div class="d-flex">
-                        <input id="id_days_min" class="data-input" type="number"
+                        <input  min="1"  id="id_days_min" class="data-input" type="number"
                                value="{% if days_min %}{{ days_min }}{% else %}1{% endif %}">
                         <p>—</p>
-                        <input id="id_days_max" class="data-input" type="number" value="40">
+                        <input  min="1"  id="id_days_max" class="data-input" type="number" value="40">
                         <p>ночей</p>
                     </div>
                 </div>
                 <div class="filter-row">
                     <div class="d-flex justify-content-between w-50">
                         <label for="id_number_of_adults mr-5">Взрослых</label>
-                        <input id="id_number_of_adults" class="data-input" type="number"
+                        <input  min="1"  id="id_number_of_adults" class="data-input" type="number"
                                value="{% if number_of_adults %}{{ number_of_adults }}{% else %}1{% endif %}">
                     </div>
                 </div>
                 <div class="filter-row">
                     <div class="d-flex justify-content-between w-50">
                         <label for="id_number_of_child mr-5">Детей</label>
-                        <input id="id_number_of_child" class="data-input" type="number" value="1">
+                        <input  min="1"  id="id_number_of_child" class="data-input" type="number" value="1">
                     </div>
                 </div>
             </div>

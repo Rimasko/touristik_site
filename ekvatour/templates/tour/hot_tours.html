@@ -2,7 +2,7 @@
 {% load tour_lists %}
 {% block title %} Горячие туры {% endblock %}
 {% block content %}
-    <h2>Горячие туры</h2>
+    <h2 class="font-weight-bold">Горячие туры</h2>
     <div class="row">
         {% country_list as country_list %}
         {% for country in country_list.all %}
@@ -56,9 +56,13 @@
        Выбрана стана: {{ country_selected.name }}
     {% endif %}
     <div>
+    <div class="row">
+
+
         {% for tour in tour_list.all %}
-            <div class="hot-tour-item row">
-                <div class="col-12 col-md-6">
+            <div class="col-6 col-md-4 mb-3">
+            <div class="hot-tour-item ">
+                <div class="top">
                     <img src="{{ tour.image.url }}">
                     <div class="overlay-bottom-left">
                         <p>{{ tour.departure_date }} / {{ tour.get_days }} ночей</p>
@@ -67,7 +71,7 @@
                         {{ tour.cost }} P.
                     </div>
                 </div>
-                <div class="col-12  col-md-6 left">
+                <div class="bottom">
                     <p id="hotel">{{ tour.hotel_name|title }}</p>
                     <p id="city">{{ tour.city }}</p>
                     <hr>
@@ -82,7 +86,9 @@
                     </form>
                 </div>
             </div>
+            </div>
         {% endfor %}
+        </div>
     </div>
 
 <div class="pagination">

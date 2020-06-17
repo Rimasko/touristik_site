@@ -42,11 +42,6 @@ INSTALLED_APPS = [
     # Установленные пакеты
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.vk',
-    'allauth.socialaccount.providers.yandex',
-    'allauth.socialaccount.providers.google',
     'ckeditor',
 
     # Свои Пакеты
